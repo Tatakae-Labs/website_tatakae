@@ -53,6 +53,16 @@ const products = [
     badge: 'Design Stage',
     tags: ['Visual Logic', 'API Orchestration', 'Event Webhooks'],
   },
+  {
+    name: 'AI Agent Mesh',
+    description:
+      'Autonomous multi-agent orchestration framework for enterprise data intelligence. Coordinates continuous data retrieval, tool calling, and automated synthesis.',
+    category: 'Intelligent Systems',
+    status: 'In Development',
+    statusColor: '#818CF8',
+    badge: 'Beta Q3',
+    tags: ['Autonomous Agents', 'RAG Pipelines', 'Tool Execution'],
+  },
 ];
 
 function ProductCard({ product, index }: { product: (typeof products)[0]; index: number }) {
@@ -68,7 +78,7 @@ function ProductCard({ product, index }: { product: (typeof products)[0]; index:
       (entries) => {
         if (entries[0].isIntersecting) {
           setTimeout(() => {
-            el.style.transition = `opacity 0.7s ease ${index * 0.1}s, transform 0.7s ease ${index * 0.1}s`;
+            el.style.transition = `opacity 0.7s ease ${index * 0.08}s, transform 0.7s ease ${index * 0.08}s`;
             el.style.opacity = '1';
             el.style.transform = 'translateY(0)';
           }, 50);
@@ -93,18 +103,18 @@ function ProductCard({ product, index }: { product: (typeof products)[0]; index:
       ref={cardRef}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
-      className="group relative flex flex-col justify-between p-7 sm:p-8 rounded-2xl transition-all duration-300"
+      className="group relative flex flex-col justify-between p-8 sm:p-9 rounded-2xl transition-all duration-300 h-full min-h-[380px]"
       style={{
-        background: hovered ? 'rgba(8, 11, 114, 0.45)' : 'rgba(255, 255, 255, 0.035)',
-        border: `1px solid ${hovered ? 'rgba(247, 247, 245, 0.28)' : 'rgba(247, 247, 245, 0.1)'}`,
+        background: hovered ? 'rgba(8, 11, 114, 0.5)' : 'rgba(255, 255, 255, 0.04)',
+        border: `1px solid ${hovered ? 'rgba(247, 247, 245, 0.3)' : 'rgba(247, 247, 245, 0.12)'}`,
         transform: hovered ? 'translateY(-6px)' : 'translateY(0)',
-        boxShadow: hovered ? '0 20px 40px -15px rgba(0, 0, 0, 0.5)' : 'none',
+        boxShadow: hovered ? '0 24px 48px -12px rgba(0, 0, 0, 0.6)' : 'none',
       }}
     >
-      <div>
+      <div className="flex flex-col flex-1">
         {/* Top Bar: Category Pill & Status Beacon */}
-        <div className="flex items-center justify-between gap-3 mb-6">
-          <span className="px-3 py-1 rounded-full text-[10px] font-mono font-semibold tracking-wider uppercase text-[#F7F7F5]/80 bg-white/5 border border-white/10">
+        <div className="flex items-center justify-between gap-3 mb-5">
+          <span className="px-3 py-1 rounded-full text-[10px] font-mono font-semibold tracking-wider uppercase text-[#F7F7F5]/85 bg-white/10 border border-white/15">
             {product.category}
           </span>
 
@@ -113,31 +123,31 @@ function ProductCard({ product, index }: { product: (typeof products)[0]; index:
               className="w-2 h-2 rounded-full"
               style={{
                 backgroundColor: product.statusColor,
-                boxShadow: product.status === 'In Development' ? `0 0 8px ${product.statusColor}` : 'none',
+                boxShadow: `0 0 8px ${product.statusColor}`,
               }}
             />
-            <span className="text-[10px] font-mono font-medium tracking-wider uppercase text-[#F7F7F5]/60">
+            <span className="text-[10px] font-mono font-medium tracking-wider uppercase text-[#F7F7F5]/70">
               {product.badge}
             </span>
           </div>
         </div>
 
         {/* Product Name */}
-        <h3 className="text-2xl sm:text-3xl font-bold tracking-tight text-[#F7F7F5] mb-3 group-hover:text-white transition-colors">
+        <h3 className="text-2xl sm:text-[1.75rem] font-bold tracking-tight text-[#F7F7F5] mb-3 leading-snug group-hover:text-white transition-colors">
           {product.name}
         </h3>
 
         {/* Description */}
-        <p className="text-sm leading-relaxed text-[#F7F7F5]/70 font-light mb-6">
+        <p className="text-sm leading-relaxed text-[#F7F7F5]/75 font-light mb-6 flex-1">
           {product.description}
         </p>
 
         {/* Tags */}
-        <div className="flex flex-wrap gap-1.5 mb-8">
+        <div className="flex flex-wrap gap-2 mb-6">
           {product.tags.map((tag) => (
             <span
               key={tag}
-              className="text-[10px] font-mono px-2.5 py-0.5 rounded bg-white/5 text-[#F7F7F5]/75 border border-white/5"
+              className="text-[11px] font-mono px-2.5 py-1 rounded-md bg-white/5 text-[#F7F7F5]/80 border border-white/10"
             >
               {tag}
             </span>
@@ -145,9 +155,9 @@ function ProductCard({ product, index }: { product: (typeof products)[0]; index:
         </div>
       </div>
 
-      {/* Card Action Footer */}
-      <div className="pt-4 border-t border-white/10 flex items-center justify-between">
-        <span className="text-xs font-mono tracking-wider uppercase text-[#F7F7F5]/50 group-hover:text-[#F7F7F5]/80 transition-colors">
+      {/* Card Action Footer - Cleanly aligned at the bottom */}
+      <div className="pt-5 border-t border-white/10 flex items-center justify-between mt-auto">
+        <span className="text-[11px] font-mono tracking-wider uppercase text-[#F7F7F5]/55 group-hover:text-[#F7F7F5]/85 transition-colors">
           {product.status}
         </span>
 
@@ -225,14 +235,14 @@ export default function ProductsSection() {
               Ecosystem.
             </h2>
           </div>
-          <p className="text-body text-[#F7F7F5]/60 max-w-md text-base sm:text-lg leading-relaxed">
+          <p className="text-body text-[#F7F7F5]/65 max-w-md text-base sm:text-lg leading-relaxed">
             We are engineering a multi-product technology ecosystem. Each platform is crafted
             to solve foundational business challenges — precisely, beautifully, and at scale.
           </p>
         </div>
 
-        {/* Product Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+        {/* Product Grid - Perfectly balanced 3x2 grid on desktop */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 items-stretch">
           {products.map((product, i) => (
             <ProductCard key={product.name} product={product} index={i} />
           ))}
@@ -242,8 +252,8 @@ export default function ProductsSection() {
         <div className="mt-16 pt-8 border-t border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <div className="flex items-center gap-3">
             <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-            <p className="text-xs font-mono text-[#F7F7F5]/50 uppercase tracking-wider">
-              Continuous Roadmap: New platforms added quarterly under active R&D.
+            <p className="text-xs font-mono text-[#F7F7F5]/60 uppercase tracking-wider">
+              Continuous Roadmap: New platforms added quarterly under active R&amp;D.
             </p>
           </div>
           <a

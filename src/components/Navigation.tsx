@@ -9,7 +9,8 @@ const navItems = [
   { id: 'products', index: '02', label: 'Products', href: '#products' },
   { id: 'philosophy', index: '03', label: 'Philosophy', href: '#philosophy' },
   { id: 'why', index: '04', label: 'Why Us', href: '#why' },
-  { id: 'contact', index: '05', label: 'Contact', href: '#contact' },
+  { id: 'team', index: '05', label: 'Team', href: '#team' },
+  { id: 'contact', index: '06', label: 'Contact', href: '#contact' },
 ];
 
 export default function Navigation() {

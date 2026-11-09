@@ -112,7 +112,7 @@ export default function ContactSection() {
           <div ref={titleRef} className="lg:col-span-5">
             <div className="flex items-center gap-4 mb-6">
               <span className="text-[11px] font-mono font-semibold tracking-widest uppercase text-[#080B72]/60">
-                05 / Start a Project
+                06 / Start a Project
               </span>
               <div className="flex-1 max-w-[80px] h-[1px] bg-[#080B72]/15" />
             </div>

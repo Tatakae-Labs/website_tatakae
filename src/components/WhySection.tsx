@@ -167,7 +167,7 @@ function ReasonCard({ reason, index }: { reason: typeof reasons[0]; index: numbe
   return (
     <div
       ref={cardRef}
-      className="p-6 sm:p-8 lg:p-10 border-b border-[#080B72]/10 md:border-r last:border-b-0 lg:[&:nth-child(3n)]:border-r-0 transition-colors duration-300 hover:bg-[#080B72]/[0.03]"
+      className="p-8 sm:p-10 border-b border-[#080B72]/10 md:border-r last:border-b-0 lg:[&:nth-child(3n)]:border-r-0 transition-colors duration-300 hover:bg-[#080B72]/[0.03] h-full min-h-[240px] flex flex-col justify-start"
     >
       <div
         style={{

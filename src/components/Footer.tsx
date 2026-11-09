@@ -22,7 +22,7 @@ const footerLinks = {
   Studio: [
     { label: 'Philosophy', href: '#philosophy' },
     { label: 'Why Tatakae Labs', href: '#why' },
-    { label: 'Methodology', href: '#philosophy' },
+    { label: 'Leadership & Team', href: '#team' },
     { label: 'Start a Project', href: '#contact' },
   ],
   Legal: [

@@ -79,7 +79,7 @@ function ServiceCard({ service, index }: { service: (typeof services)[0]; index:
       ref={cardRef}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
-      className="group relative flex flex-col justify-between p-8 sm:p-9 rounded-2xl transition-all duration-400 cursor-default"
+      className="group relative flex flex-col justify-between p-8 sm:p-9 rounded-2xl transition-all duration-400 cursor-default h-full min-h-[340px]"
       style={{
         background: hovered ? '#080B72' : 'rgba(255, 255, 255, 0.7)',
         color: hovered ? '#F7F7F5' : '#05062F',
@@ -88,7 +88,7 @@ function ServiceCard({ service, index }: { service: (typeof services)[0]; index:
         boxShadow: hovered ? '0 20px 36px -12px rgba(8, 11, 114, 0.25)' : '0 2px 8px -2px rgba(8, 11, 114, 0.04)',
       }}
     >
-      <div>
+      <div className="flex flex-col flex-1">
         {/* Number Bar */}
         <div className="flex items-center justify-between mb-6">
           <span
@@ -127,7 +127,7 @@ function ServiceCard({ service, index }: { service: (typeof services)[0]; index:
 
         {/* Description */}
         <p
-          className="text-sm leading-relaxed mb-6 font-light transition-opacity"
+          className="text-sm leading-relaxed mb-6 font-light transition-opacity flex-1"
           style={{ opacity: hovered ? 0.85 : 0.65 }}
         >
           {service.description}
@@ -135,7 +135,7 @@ function ServiceCard({ service, index }: { service: (typeof services)[0]; index:
       </div>
 
       {/* Tags */}
-      <div className="flex flex-wrap gap-1.5 pt-4 border-t" style={{ borderColor: hovered ? 'rgba(247, 247, 245, 0.15)' : 'rgba(8, 11, 114, 0.08)' }}>
+      <div className="flex flex-wrap gap-1.5 pt-5 border-t mt-auto" style={{ borderColor: hovered ? 'rgba(247, 247, 245, 0.15)' : 'rgba(8, 11, 114, 0.08)' }}>
         {service.tags.map((tag) => (
           <span
             key={tag}

@@ -9,6 +9,7 @@ import ServicesSection from '@/components/ServicesSection';
 import ProductsSection from '@/components/ProductsSection';
 import PhilosophySection from '@/components/PhilosophySection';
 import WhySection from '@/components/WhySection';
+import TeamSection from '@/components/TeamSection';
 import ContactSection from '@/components/ContactSection';
 import Footer from '@/components/Footer';
 import CustomCursor from '@/components/CustomCursor';
@@ -31,6 +32,7 @@ export default function Home() {
             <ProductsSection />
             <PhilosophySection />
             <WhySection />
+            <TeamSection />
             <ContactSection />
           </main>
           <Footer />
