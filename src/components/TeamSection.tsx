@@ -36,14 +36,14 @@ const teamMembers: TeamMember[] = [
     initials: 'AD',
   },
   {
-    name: 'Sparsh Khandagale',
-    role: 'Product Outreach & GTM',
-    discipline: 'Outreach & GTM',
-    username: 'Sparshkhandagale29',
-    githubUrl: 'https://github.com/Sparshkhandagale29',
-    bio: 'Driving product outreach, go-to-market strategy, and client acquisition. Connecting engineering capabilities with market opportunities through strategic positioning.',
-    tags: ['Go-To-Market', 'Product Strategy', 'Outreach'],
-    initials: 'SK',
+    name: 'Vedanti',
+    role: 'Co-Founder',
+    discipline: 'Co-Founder',
+    username: 'Vedvina',
+    githubUrl: 'https://github.com/Vedvina',
+    bio: 'Co-founding the studio with a focus on crafting accessible digital interfaces, complex SaaS workflows, and unified design systems with precision and smooth interaction physics.',
+    tags: ['Design Systems', 'Interactive UI', 'Client Apps'],
+    initials: 'VD',
   },
   {
     name: 'Vedang Pathak',
@@ -56,14 +56,14 @@ const teamMembers: TeamMember[] = [
     initials: 'VP',
   },
   {
-    name: 'Vedanti',
-    role: 'Co-Founder',
-    discipline: 'Co-Founder',
-    username: 'Vedvina',
-    githubUrl: 'https://github.com/Vedvina',
-    bio: 'Co-founding the studio with a focus on crafting accessible digital interfaces, complex SaaS workflows, and unified design systems with precision and smooth interaction physics.',
-    tags: ['Design Systems', 'Interactive UI', 'Client Apps'],
-    initials: 'VD',
+    name: 'Sparsh Khandagale',
+    role: 'Product Outreach & GTM',
+    discipline: 'Outreach & GTM',
+    username: 'Sparshkhandagale29',
+    githubUrl: 'https://github.com/Sparshkhandagale29',
+    bio: 'Driving product outreach, go-to-market strategy, and client acquisition. Connecting engineering capabilities with market opportunities through strategic positioning.',
+    tags: ['Go-To-Market', 'Product Strategy', 'Outreach'],
+    initials: 'SK',
   },
 ];
 
@@ -99,7 +99,7 @@ function TeamCard({ member, index }: { member: TeamMember; index: number }) {
       ref={cardRef}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
-      className="group relative flex flex-col justify-between p-6 sm:p-7 rounded-2xl transition-all duration-400 cursor-default h-full w-full"
+      className="group relative flex flex-col justify-between p-8 sm:p-9 lg:p-10 rounded-2xl transition-all duration-400 cursor-default h-full w-full"
       style={{
         background: hovered ? '#080B72' : 'rgba(255, 255, 255, 0.85)',
         color: hovered ? '#F7F7F5' : '#05062F',
@@ -110,7 +110,7 @@ function TeamCard({ member, index }: { member: TeamMember; index: number }) {
     >
       <div>
         {/* Top Header: Avatar & Discipline Pill */}
-        <div className="flex items-center justify-between mb-4">
+        <div className="flex items-center justify-between gap-4 mb-6">
           <div
             className="w-12 h-12 rounded-xl overflow-hidden flex items-center justify-center font-mono font-bold text-sm tracking-wider transition-all relative flex-shrink-0"
             style={{
@@ -135,7 +135,7 @@ function TeamCard({ member, index }: { member: TeamMember; index: number }) {
           </div>
 
           <span
-            className="text-[10px] font-mono font-semibold tracking-wider uppercase px-2.5 py-1 rounded-full border transition-all truncate max-w-[160px]"
+            className="text-[10px] font-mono font-semibold tracking-wider uppercase px-3 py-1 rounded-full border transition-all whitespace-nowrap"
             style={{
               borderColor: hovered ? 'rgba(247, 247, 245, 0.25)' : 'rgba(8, 11, 114, 0.15)',
               color: hovered ? 'rgba(247, 247, 245, 0.85)' : 'rgba(8, 11, 114, 0.65)',
@@ -147,13 +147,13 @@ function TeamCard({ member, index }: { member: TeamMember; index: number }) {
         </div>
 
         {/* Member Name */}
-        <h3 className="text-xl sm:text-2xl font-bold tracking-tight mb-1 leading-snug">
+        <h3 className="text-2xl sm:text-[1.65rem] font-bold tracking-tight mb-2 leading-snug">
           {member.name}
         </h3>
 
         {/* Member Role */}
         <p
-          className="text-[11px] font-mono font-semibold uppercase tracking-wider mb-3 transition-opacity leading-snug"
+          className="text-xs font-mono font-semibold uppercase tracking-wider mb-4 transition-opacity leading-snug"
           style={{
             color: hovered ? '#818CF8' : '#080B72',
             opacity: hovered ? 1 : 0.85,
@@ -164,18 +164,18 @@ function TeamCard({ member, index }: { member: TeamMember; index: number }) {
 
         {/* Bio */}
         <p
-          className="text-xs sm:text-sm leading-relaxed mb-4 font-light transition-opacity"
+          className="text-sm sm:text-[0.95rem] leading-[1.75] mb-6 font-light transition-opacity"
           style={{ opacity: hovered ? 0.85 : 0.65 }}
         >
           {member.bio}
         </p>
 
         {/* Specialty Tags */}
-        <div className="flex flex-wrap gap-1.5 mb-5">
+        <div className="flex flex-wrap gap-2 mb-6">
           {member.tags.map((tag) => (
             <span
               key={tag}
-              className="text-[10px] font-mono px-2 py-0.5 rounded-md border transition-all"
+              className="text-[11px] font-mono px-2.5 py-1 rounded-md border transition-all"
               style={{
                 borderColor: hovered ? 'rgba(247, 247, 245, 0.25)' : 'rgba(8, 11, 114, 0.12)',
                 color: hovered ? '#F7F7F5' : '#080B72',
@@ -190,7 +190,7 @@ function TeamCard({ member, index }: { member: TeamMember; index: number }) {
 
       {/* GitHub Link Action */}
       <div
-        className="pt-4 border-t flex items-center justify-between mt-auto"
+        className="pt-5 border-t flex items-center justify-between mt-auto"
         style={{ borderColor: hovered ? 'rgba(247, 247, 245, 0.15)' : 'rgba(8, 11, 114, 0.08)' }}
       >
         <span
@@ -264,12 +264,12 @@ export default function TeamSection() {
           </p>
         </div>
 
-        {/* Team Grid: Balanced responsive grid (3 on top row, 2 centered on bottom row) */}
-        <div className="flex flex-wrap justify-center gap-6 sm:gap-7 items-stretch">
+        {/* Team Grid: Balanced responsive grid (3 on top row, 2 centered on bottom row) with generous gaps */}
+        <div className="flex flex-wrap justify-center gap-8 lg:gap-10 items-stretch">
           {teamMembers.map((member, i) => (
             <div
               key={member.username}
-              className="w-full sm:w-[calc(50%-14px)] lg:w-[calc(33.333%-19px)] flex"
+              className="w-full sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.75rem)] flex"
             >
               <TeamCard member={member} index={i} />
             </div>

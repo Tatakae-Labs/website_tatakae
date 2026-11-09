@@ -132,9 +132,9 @@ export default function ContactSection() {
 
             {/* Direct Channel Cards */}
             <div className="space-y-4">
-              <div className="p-5 rounded-xl border border-[#080B72]/10 bg-white/50 backdrop-blur-xs">
-                <span className="block text-[10px] font-mono uppercase tracking-widest text-[#080B72]/50 mb-1">
-                  Direct Inquiries & Project RFPs
+              <div className="p-5 sm:p-6 rounded-xl border border-[#080B72]/10 bg-white/50 backdrop-blur-xs">
+                <span className="block text-[10px] font-mono uppercase tracking-widest text-[#080B72]/50 mb-1.5">
+                  Direct Inquiries &amp; Project RFPs
                 </span>
                 <a
                   href="mailto:tatakaelabs@gmail.com"
@@ -142,6 +142,15 @@ export default function ContactSection() {
                 >
                   tatakaelabs@gmail.com
                 </a>
+              </div>
+
+              <div className="p-5 sm:p-6 rounded-xl border border-[#080B72]/10 bg-white/50 backdrop-blur-xs">
+                <span className="block text-[10px] font-mono uppercase tracking-widest text-[#080B72]/50 mb-1.5">
+                  Global Availability &amp; Response Time
+                </span>
+                <p className="text-sm font-medium text-[#05062F]">
+                  Operating from Nagpur, India · Guaranteed reply within 24 hours
+                </p>
               </div>
             </div>
 

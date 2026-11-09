@@ -167,34 +167,38 @@ function ReasonCard({ reason, index }: { reason: typeof reasons[0]; index: numbe
   return (
     <div
       ref={cardRef}
-      className="p-6 sm:p-8 lg:p-9 border-b border-[#080B72]/10 md:border-r last:border-b-0 md:[&:nth-child(2n)]:border-r-0 lg:[&:nth-child(2n)]:border-r lg:[&:nth-child(3n)]:border-r-0 md:[&:nth-child(n+5)]:border-b-0 lg:[&:nth-child(n+4)]:border-b-0 transition-colors duration-300 hover:bg-[#080B72]/[0.03] flex flex-col justify-start"
+      className="p-8 sm:p-10 lg:p-12 border-b border-[#080B72]/10 md:border-r last:border-b-0 md:[&:nth-child(2n)]:border-r-0 lg:[&:nth-child(2n)]:border-r lg:[&:nth-child(3n)]:border-r-0 md:[&:nth-child(n+5)]:border-b-0 lg:[&:nth-child(n+4)]:border-b-0 transition-colors duration-300 hover:bg-[#080B72]/[0.03] flex flex-col justify-start"
     >
       <div
         style={{
           fontSize: '1.4rem',
           color: '#080B72',
           opacity: 0.35,
-          marginBottom: '16px',
+          marginBottom: '20px',
         }}
       >
         {reason.icon}
       </div>
-      <h3 style={{
-        fontSize: '1.05rem',
-        fontWeight: 700,
-        letterSpacing: '-0.01em',
-        color: '#080B72',
-        marginBottom: '10px',
-      }}>
+      <h3
+        style={{
+          fontSize: '1.2rem',
+          fontWeight: 700,
+          letterSpacing: '-0.015em',
+          color: '#080B72',
+          marginBottom: '12px',
+        }}
+      >
         {reason.title}
       </h3>
-      <p style={{
-        fontSize: '0.875rem',
-        lineHeight: 1.65,
-        color: '#05062F',
-        opacity: 0.6,
-        fontWeight: 300,
-      }}>
+      <p
+        style={{
+          fontSize: '0.92rem',
+          lineHeight: 1.75,
+          color: '#05062F',
+          opacity: 0.65,
+          fontWeight: 300,
+        }}
+      >
         {reason.description}
       </p>
     </div>

@@ -103,7 +103,7 @@ function ProductCard({ product, index }: { product: (typeof products)[0]; index:
       ref={cardRef}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
-      className="group relative flex flex-col justify-between p-6 sm:p-7 rounded-2xl transition-all duration-300 h-full"
+      className="group relative flex flex-col justify-between p-8 sm:p-9 lg:p-10 rounded-2xl transition-all duration-300 h-full"
       style={{
         background: hovered ? 'rgba(8, 11, 114, 0.45)' : 'rgba(255, 255, 255, 0.035)',
         border: `1px solid ${hovered ? 'rgba(247, 247, 245, 0.28)' : 'rgba(247, 247, 245, 0.1)'}`,
@@ -113,7 +113,7 @@ function ProductCard({ product, index }: { product: (typeof products)[0]; index:
     >
       <div>
         {/* Top Bar: Category Pill & Status Beacon */}
-        <div className="flex items-center justify-between gap-3 mb-4">
+        <div className="flex items-center justify-between gap-3 mb-6">
           <span className="px-3 py-1 rounded-full text-[10px] font-mono font-semibold tracking-wider uppercase text-[#F7F7F5]/85 bg-white/10 border border-white/15">
             {product.category}
           </span>
@@ -133,17 +133,17 @@ function ProductCard({ product, index }: { product: (typeof products)[0]; index:
         </div>
 
         {/* Product Name */}
-        <h3 className="text-xl sm:text-2xl font-bold tracking-tight text-[#F7F7F5] mb-2.5 leading-snug group-hover:text-white transition-colors">
+        <h3 className="text-2xl font-bold tracking-tight text-[#F7F7F5] mb-3 leading-snug group-hover:text-white transition-colors">
           {product.name}
         </h3>
 
         {/* Description */}
-        <p className="text-xs sm:text-sm leading-relaxed text-[#F7F7F5]/75 font-light mb-4">
+        <p className="text-sm sm:text-[0.95rem] leading-[1.75] text-[#F7F7F5]/75 font-light mb-6">
           {product.description}
         </p>
 
         {/* Tags */}
-        <div className="flex flex-wrap gap-1.5 mb-5">
+        <div className="flex flex-wrap gap-2 mb-6">
           {product.tags.map((tag) => (
             <span
               key={tag}
@@ -156,7 +156,7 @@ function ProductCard({ product, index }: { product: (typeof products)[0]; index:
       </div>
 
       {/* Card Action Footer */}
-      <div className="pt-4 border-t border-white/10 flex items-center justify-between mt-auto">
+      <div className="pt-5 border-t border-white/10 flex items-center justify-between mt-auto">
         <span className="text-[10px] font-mono tracking-wider uppercase text-[#F7F7F5]/55 group-hover:text-[#F7F7F5]/85 transition-colors">
           {product.status}
         </span>
@@ -241,8 +241,8 @@ export default function ProductsSection() {
           </p>
         </div>
 
-        {/* Product Grid - Compact, balanced 3x2 grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6 items-stretch">
+        {/* Product Grid - Spacious, balanced 3x2 grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10 items-stretch">
           {products.map((product, i) => (
             <ProductCard key={product.name} product={product} index={i} />
           ))}
