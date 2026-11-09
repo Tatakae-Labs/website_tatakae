@@ -1,11 +1,14 @@
 'use client';
 
 import { useRef, useEffect, useState } from 'react';
+import Image from 'next/image';
 
 interface TeamMember {
   name: string;
   role: string;
   discipline: string;
+  username: string;
+  githubUrl: string;
   bio: string;
   tags: string[];
   initials: string;
@@ -15,40 +18,59 @@ const teamMembers: TeamMember[] = [
   {
     name: 'Rugved Kadu',
     role: 'Founder & Principal Systems Architect',
-    discipline: 'Systems Architecture',
-    bio: 'Architecting distributed cloud infrastructures, multi-tenant SaaS backbones, and mission-critical digital systems. Obsessed with performance, clean abstractions, and scale.',
+    discipline: 'Founder & Core Systems',
+    username: 'rugvedkadu06',
+    githubUrl: 'https://github.com/rugvedkadu06',
+    bio: 'Architecting distributed cloud infrastructures, multi-tenant SaaS backbones, and mission-critical digital systems. Obsessed with high concurrency, clean abstractions, and scale.',
     tags: ['Distributed Systems', 'Cloud Native', 'Product Vision'],
     initials: 'RK',
   },
   {
-    name: 'AI & Research Core',
-    role: 'Lead AI & Autonomous Systems Engineer',
+    name: 'Abha Dhandre',
+    role: 'AI & Machine Learning Engineer',
     discipline: 'Applied Intelligence',
-    bio: 'Directing domain-specific LLM fine-tuning, autonomous agent meshes, and intelligent workflow reasoning pipelines that drive real-world business automation.',
+    username: 'gloomingtwilight',
+    githubUrl: 'https://github.com/gloomingtwilight',
+    bio: 'Directing domain-specific LLM fine-tuning, autonomous agent reasoning meshes, and intelligent workflow pipelines that convert complex data into automated intelligence.',
     tags: ['Autonomous Agents', 'RAG Meshes', 'Applied ML'],
-    initials: 'AI',
+    initials: 'AD',
   },
   {
-    name: 'Product & Design Systems',
-    role: 'Principal Product & UX Architect',
-    discipline: 'Interface Design',
-    bio: 'Crafting high-velocity digital experiences, complex enterprise dashboards, and mathematical design systems. Bridging user intuition with deep software utility.',
-    tags: ['Design Systems', 'UX Architecture', 'Micro-Interactions'],
-    initials: 'UX',
+    name: 'Sparsh Khandagale',
+    role: 'Full-Stack Systems Engineer',
+    discipline: 'Software Engineering',
+    username: 'Sparshkhandagale29',
+    githubUrl: 'https://github.com/Sparshkhandagale29',
+    bio: 'Engineering resilient modern web applications, high-performance API layers, and multi-tenant SaaS features with end-to-end type safety, speed, and clean code.',
+    tags: ['Next.js & React', 'API Engineering', 'TypeScript'],
+    initials: 'SK',
   },
   {
-    name: 'Platform & Infrastructure',
-    role: 'Senior Cloud & Reliability Engineer',
-    discipline: 'Infrastructure & DevOps',
-    bio: 'Overseeing container orchestration, multi-region database replication, zero-downtime CI/CD pipelines, and 99.9% architectural uptime targets.',
-    tags: ['Kubernetes', 'CI/CD Automation', 'Security & SLA'],
-    initials: 'DE',
+    name: 'Vedang Pathak',
+    role: 'Cloud & DevOps Architect',
+    discipline: 'Platform & Infra',
+    username: 'Vedang1710',
+    githubUrl: 'https://github.com/Vedang1710',
+    bio: 'Overseeing automated zero-downtime CI/CD delivery pipelines, container orchestration, multi-region cloud resilience, and continuous architectural reliability.',
+    tags: ['Kubernetes', 'CI/CD Automation', 'Cloud Reliability'],
+    initials: 'VP',
+  },
+  {
+    name: 'Vedanti',
+    role: 'Product & Frontend Engineer',
+    discipline: 'Frontend & UI/UX',
+    username: 'Vedvina',
+    githubUrl: 'https://github.com/Vedvina',
+    bio: 'Crafting accessible digital interfaces, complex SaaS workflows, and unified design systems with pixel-level mathematical precision and smooth interaction physics.',
+    tags: ['Design Systems', 'Interactive UI', 'Client Apps'],
+    initials: 'VD',
   },
 ];
 
 function TeamCard({ member, index }: { member: TeamMember; index: number }) {
   const cardRef = useRef<HTMLDivElement>(null);
   const [hovered, setHovered] = useState(false);
+  const [imageError, setImageError] = useState(false);
 
   useEffect(() => {
     const el = cardRef.current;
@@ -59,7 +81,7 @@ function TeamCard({ member, index }: { member: TeamMember; index: number }) {
       (entries) => {
         if (entries[0].isIntersecting) {
           setTimeout(() => {
-            el.style.transition = `opacity 0.7s ease ${index * 0.1}s, transform 0.7s ease ${index * 0.1}s`;
+            el.style.transition = `opacity 0.7s ease ${index * 0.08}s, transform 0.7s ease ${index * 0.08}s`;
             el.style.opacity = '1';
             el.style.transform = 'translateY(0)';
           }, 50);
@@ -77,9 +99,9 @@ function TeamCard({ member, index }: { member: TeamMember; index: number }) {
       ref={cardRef}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
-      className="group relative flex flex-col justify-between p-8 sm:p-9 rounded-2xl transition-all duration-400 cursor-default h-full min-h-[380px]"
+      className="group relative flex flex-col justify-between p-7 sm:p-8 rounded-2xl transition-all duration-400 cursor-default h-full min-h-[420px]"
       style={{
-        background: hovered ? '#080B72' : 'rgba(255, 255, 255, 0.75)',
+        background: hovered ? '#080B72' : 'rgba(255, 255, 255, 0.8)',
         color: hovered ? '#F7F7F5' : '#05062F',
         border: `1px solid ${hovered ? '#080B72' : 'rgba(8, 11, 114, 0.12)'}`,
         transform: hovered ? 'translateY(-6px)' : 'translateY(0)',
@@ -87,24 +109,36 @@ function TeamCard({ member, index }: { member: TeamMember; index: number }) {
       }}
     >
       <div className="flex flex-col flex-1">
-        {/* Top Header: Monogram Avatar & Discipline Pill */}
-        <div className="flex items-center justify-between mb-6">
+        {/* Top Header: Avatar & Discipline Pill */}
+        <div className="flex items-center justify-between mb-5">
           <div
-            className="w-12 h-12 rounded-xl flex items-center justify-center font-mono font-bold text-sm tracking-wider transition-all"
+            className="w-12 h-12 rounded-xl overflow-hidden flex items-center justify-center font-mono font-bold text-sm tracking-wider transition-all relative flex-shrink-0"
             style={{
               background: hovered ? 'rgba(247, 247, 245, 0.15)' : 'rgba(8, 11, 114, 0.08)',
               color: hovered ? '#FFFFFF' : '#080B72',
               border: `1px solid ${hovered ? 'rgba(247, 247, 245, 0.25)' : 'rgba(8, 11, 114, 0.15)'}`,
             }}
           >
-            {member.initials}
+            {!imageError ? (
+              <Image
+                src={`https://github.com/${member.username}.png`}
+                alt={member.name}
+                width={48}
+                height={48}
+                className="w-full h-full object-cover"
+                onError={() => setImageError(true)}
+                unoptimized
+              />
+            ) : (
+              <span>{member.initials}</span>
+            )}
           </div>
 
           <span
-            className="text-[10px] font-mono font-semibold tracking-wider uppercase px-2.5 py-1 rounded-full border transition-all"
+            className="text-[9px] font-mono font-semibold tracking-wider uppercase px-2.5 py-1 rounded-full border transition-all truncate max-w-[140px]"
             style={{
               borderColor: hovered ? 'rgba(247, 247, 245, 0.25)' : 'rgba(8, 11, 114, 0.15)',
-              color: hovered ? 'rgba(247, 247, 245, 0.85)' : 'rgba(8, 11, 114, 0.6)',
+              color: hovered ? 'rgba(247, 247, 245, 0.85)' : 'rgba(8, 11, 114, 0.65)',
               background: hovered ? 'rgba(247, 247, 245, 0.06)' : 'rgba(8, 11, 114, 0.02)',
             }}
           >
@@ -113,16 +147,16 @@ function TeamCard({ member, index }: { member: TeamMember; index: number }) {
         </div>
 
         {/* Member Name */}
-        <h3 className="text-xl sm:text-2xl font-bold tracking-tight mb-1 leading-snug">
+        <h3 className="text-xl sm:text-[1.35rem] font-bold tracking-tight mb-1 leading-snug">
           {member.name}
         </h3>
 
         {/* Member Role */}
         <p
-          className="text-xs font-mono font-semibold uppercase tracking-wider mb-4 transition-opacity"
+          className="text-[11px] font-mono font-semibold uppercase tracking-wider mb-4 transition-opacity leading-snug"
           style={{
             color: hovered ? '#818CF8' : '#080B72',
-            opacity: hovered ? 1 : 0.8,
+            opacity: hovered ? 1 : 0.85,
           }}
         >
           {member.role}
@@ -130,31 +164,56 @@ function TeamCard({ member, index }: { member: TeamMember; index: number }) {
 
         {/* Bio */}
         <p
-          className="text-sm leading-relaxed mb-6 font-light transition-opacity flex-1"
+          className="text-xs sm:text-sm leading-relaxed mb-5 font-light transition-opacity flex-1"
           style={{ opacity: hovered ? 0.85 : 0.65 }}
         >
           {member.bio}
         </p>
       </div>
 
-      {/* Specialty Tags */}
-      <div
-        className="flex flex-wrap gap-1.5 pt-5 border-t mt-auto"
-        style={{ borderColor: hovered ? 'rgba(247, 247, 245, 0.15)' : 'rgba(8, 11, 114, 0.08)' }}
-      >
-        {member.tags.map((tag) => (
+      <div>
+        {/* Specialty Tags */}
+        <div className="flex flex-wrap gap-1.5 mb-4">
+          {member.tags.map((tag) => (
+            <span
+              key={tag}
+              className="text-[10px] font-mono px-2 py-0.5 rounded-md border transition-all"
+              style={{
+                borderColor: hovered ? 'rgba(247, 247, 245, 0.25)' : 'rgba(8, 11, 114, 0.12)',
+                color: hovered ? '#F7F7F5' : '#080B72',
+                background: hovered ? 'rgba(247, 247, 245, 0.08)' : 'rgba(8, 11, 114, 0.02)',
+              }}
+            >
+              {tag}
+            </span>
+          ))}
+        </div>
+
+        {/* GitHub Link Action */}
+        <div
+          className="pt-4 border-t flex items-center justify-between"
+          style={{ borderColor: hovered ? 'rgba(247, 247, 245, 0.15)' : 'rgba(8, 11, 114, 0.08)' }}
+        >
           <span
-            key={tag}
-            className="text-[10px] font-mono px-2.5 py-0.5 rounded-md border transition-all"
-            style={{
-              borderColor: hovered ? 'rgba(247, 247, 245, 0.25)' : 'rgba(8, 11, 114, 0.12)',
-              color: hovered ? '#F7F7F5' : '#080B72',
-              background: hovered ? 'rgba(247, 247, 245, 0.08)' : 'rgba(8, 11, 114, 0.02)',
-            }}
+            className="text-[11px] font-mono transition-opacity"
+            style={{ opacity: hovered ? 0.7 : 0.5 }}
           >
-            {tag}
+            GitHub
           </span>
-        ))}
+
+          <a
+            href={member.githubUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1.5 text-xs font-mono font-semibold tracking-wider hover:underline transition-colors"
+            style={{ color: hovered ? '#FFFFFF' : '#080B72' }}
+          >
+            <span>@{member.username}</span>
+            <svg width="10" height="10" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+              <path d="M1 11L11 1M11 1H3M11 1V9" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </a>
+        </div>
       </div>
     </div>
   );
@@ -202,34 +261,34 @@ export default function TeamSection() {
             </h2>
           </div>
           <p className="text-body text-[#05062F]/70 max-w-md text-base sm:text-lg leading-relaxed">
-            A multidisciplinary collective of systems architects, AI researchers, and product engineers
-            dedicated to crafting software with mathematical rigor and long-term utility.
+            A multidisciplinary collective of systems architects, AI engineers, and product designers
+            dedicated to crafting intelligent software with engineering rigor and real-world scale.
           </p>
         </div>
 
-        {/* Team Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 items-stretch">
+        {/* Team Grid: 5-column layout on XL screens, 3-col on desktop, 2-col on tablet */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6 sm:gap-7 items-stretch">
           {teamMembers.map((member, i) => (
-            <TeamCard key={member.name} member={member} index={i} />
+            <TeamCard key={member.username} member={member} index={i} />
           ))}
         </div>
 
         {/* Culture / Hiring Callout Banner */}
-        <div className="mt-16 p-8 sm:p-10 rounded-2xl border border-[#080B72]/15 bg-white/60 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 shadow-xs">
+        <div className="mt-16 p-8 sm:p-10 rounded-2xl border border-[#080B72]/15 bg-white/70 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 shadow-xs">
           <div>
             <span className="text-[10px] font-mono uppercase tracking-widest text-[#080B72]/60 font-semibold block mb-1">
-              Engineering Culture · Studio Expansion
+              Engineering Collective · Tatakae Labs
             </span>
             <h4 className="text-lg sm:text-xl font-bold text-[#080B72] tracking-tight">
-              Interested in engineering what&apos;s next?
+              Interested in collaborating or joining our ranks?
             </h4>
             <p className="text-xs sm:text-sm text-[#05062F]/70 mt-1 max-w-xl">
-              We collaborate with world-class engineers, designers, and AI researchers on high-impact systems.
+              We partner with ambitious software engineers, design architects, and researchers on high-impact projects.
             </p>
           </div>
           <a
             href="mailto:tatakaelabs@gmail.com?subject=Engineering%20Career%20Inquiry%20%E2%80%94%20TATAKAE%20LABS"
-            className="btn-outline px-6 py-3 text-xs tracking-wider uppercase font-semibold whitespace-nowrap self-stretch sm:self-auto text-center"
+            className="btn-outline px-6 py-3 text-xs tracking-wider uppercase font-semibold whitespace-nowrap self-stretch sm:self-auto text-center cursor-pointer"
           >
             Join The Studio →
           </a>
@@ -238,4 +297,3 @@ export default function TeamSection() {
     </section>
   );
 }
-
