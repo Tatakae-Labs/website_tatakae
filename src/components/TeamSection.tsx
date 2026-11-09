@@ -99,8 +99,9 @@ function TeamCard({ member, index }: { member: TeamMember; index: number }) {
       ref={cardRef}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
-      className="group relative flex flex-col justify-between p-8 sm:p-9 lg:p-10 pb-16 sm:pb-18 rounded-2xl transition-all duration-300 cursor-default h-full w-full overflow-hidden"
+      className="group relative flex flex-col justify-between rounded-2xl transition-all duration-300 cursor-default w-full overflow-hidden"
       style={{
+        padding: '32px 28px 56px 28px',
         background: hovered ? '#080B72' : 'rgba(255, 255, 255, 0.85)',
         color: hovered ? '#F7F7F5' : '#05062F',
         border: `1px solid ${hovered ? '#080B72' : 'rgba(8, 11, 114, 0.12)'}`,
@@ -164,14 +165,14 @@ function TeamCard({ member, index }: { member: TeamMember; index: number }) {
 
         {/* Bio */}
         <p
-          className="text-sm sm:text-[0.95rem] leading-[1.75] mb-6 font-light transition-opacity"
+          className="text-sm sm:text-[0.95rem] leading-[1.75] mb-6 font-light transition-opacity sm:min-h-[72px]"
           style={{ opacity: hovered ? 0.85 : 0.65 }}
         >
           {member.bio}
         </p>
 
         {/* Specialty Tags */}
-        <div className="flex flex-wrap gap-2 pr-28 sm:pr-36">
+        <div className="flex flex-wrap gap-2 pr-28 sm:pr-36 sm:min-h-[48px] items-start">
           {member.tags.map((tag) => (
             <span
               key={tag}
@@ -280,7 +281,10 @@ export default function TeamSection() {
         </div>
 
         {/* Culture / Hiring Callout Banner */}
-        <div className="mt-14 sm:mt-16 p-7 sm:p-9 rounded-2xl border border-[#080B72]/15 bg-white/70 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 shadow-xs">
+        <div
+          className="mt-14 sm:mt-16 rounded-2xl border border-[#080B72]/15 bg-white/70 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 shadow-xs"
+          style={{ padding: '32px 28px' }}
+        >
           <div>
             <span className="text-[10px] font-mono uppercase tracking-widest text-[#080B72]/60 font-semibold block mb-1">
               Engineering Collective · Tatakae Labs

@@ -17,7 +17,7 @@ export default function HeroSection() {
   return (
     <section
       id="hero"
-      className="relative min-h-screen flex flex-col justify-end overflow-hidden bg-[#F7F7F5]"
+      className="relative min-h-screen flex flex-col justify-end overflow-hidden bg-[#F7F7F5] pt-20 md:pt-0"
       style={{ paddingBottom: '80px' }}
     >
       {/* Haikei Organic Blobs Background */}

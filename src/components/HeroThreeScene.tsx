@@ -13,9 +13,9 @@ function Logo3DEmblem() {
 
   const isMobile = size.width < 768;
   const targetX = isMobile ? 0 : size.width < 1280 ? 1.25 : 1.45;
-  const targetY = isMobile ? 0.85 : 0.25;
-  const targetZ = isMobile ? -0.7 : -0.2;
-  const baseScale = isMobile ? 0.65 : size.width < 1280 ? 0.82 : 0.95;
+  const targetY = isMobile ? 1.45 : 0.25;
+  const targetZ = isMobile ? -0.5 : -0.2;
+  const baseScale = isMobile ? 0.38 : size.width < 1280 ? 0.82 : 0.95;
 
   const texture = useTexture('/logo.png');
   texture.colorSpace = THREE.SRGBColorSpace;

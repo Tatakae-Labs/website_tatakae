@@ -103,8 +103,9 @@ function ProductCard({ product, index }: { product: (typeof products)[0]; index:
       ref={cardRef}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
-      className="group relative flex flex-col justify-between p-5 sm:p-6 rounded-2xl transition-all duration-300 h-full"
+      className="group relative flex flex-col justify-between rounded-2xl transition-all duration-300 w-full"
       style={{
+        padding: '24px 22px',
         background: hovered ? 'rgba(8, 11, 114, 0.55)' : 'rgba(255, 255, 255, 0.035)',
         border: `1px solid ${hovered ? 'rgba(247, 247, 245, 0.35)' : 'rgba(247, 247, 245, 0.1)'}`,
         transform: hovered ? 'translateY(-4px)' : 'translateY(0)',
@@ -137,12 +138,12 @@ function ProductCard({ product, index }: { product: (typeof products)[0]; index:
           {product.name}
         </h3>
 
-        <p className="text-xs sm:text-[13px] leading-relaxed text-[#F7F7F5]/75 font-light mb-3.5">
+        <p className="text-xs sm:text-[13px] leading-relaxed text-[#F7F7F5]/75 font-light mb-3.5 sm:min-h-[58px]">
           {product.description}
         </p>
 
         {/* Feature Tags - naturally wrap with compact gaps */}
-        <div className="flex flex-wrap gap-1.5 mb-4">
+        <div className="flex flex-wrap gap-1.5 mb-5 sm:min-h-[48px] items-start">
           {product.tags.map((tag) => (
             <span
               key={tag}
@@ -156,9 +157,18 @@ function ProductCard({ product, index }: { product: (typeof products)[0]; index:
 
       {/* 3. Footer: Development stage and Early Access CTA aligned consistently with mt-auto */}
       <div className="mt-auto pt-3 border-t border-white/10 flex items-center justify-between gap-2">
-        <span className="text-[10px] font-mono tracking-wider uppercase text-[#F7F7F5]/55 group-hover:text-[#F7F7F5]/85 transition-colors">
-          {product.status}
-        </span>
+        <div className="flex items-center gap-1.5">
+          <span
+            className="w-1.5 h-1.5 rounded-full"
+            style={{
+              backgroundColor: product.statusColor,
+              boxShadow: `0 0 6px ${product.statusColor}`,
+            }}
+          />
+          <span className="text-[10px] font-mono tracking-wider uppercase text-[#F7F7F5]/55 group-hover:text-[#F7F7F5]/85 transition-colors">
+            {product.status}
+          </span>
+        </div>
 
         <button
           type="button"

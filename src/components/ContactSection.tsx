@@ -132,7 +132,10 @@ export default function ContactSection() {
 
             {/* Direct Channel Cards */}
             <div className="space-y-4">
-              <div className="p-5 sm:p-6 rounded-xl border border-[#080B72]/10 bg-white/50 backdrop-blur-xs">
+              <div
+                className="rounded-xl border border-[#080B72]/10 bg-white/70 backdrop-blur-xs transition-all hover:bg-white hover:border-[#080B72]/20 shadow-xs"
+                style={{ padding: '22px 24px' }}
+              >
                 <span className="block text-[10px] font-mono uppercase tracking-widest text-[#080B72]/50 mb-1.5">
                   Direct Inquiries &amp; Project RFPs
                 </span>
@@ -144,7 +147,10 @@ export default function ContactSection() {
                 </a>
               </div>
 
-              <div className="p-5 sm:p-6 rounded-xl border border-[#080B72]/10 bg-white/50 backdrop-blur-xs">
+              <div
+                className="rounded-xl border border-[#080B72]/10 bg-white/70 backdrop-blur-xs transition-all hover:bg-white hover:border-[#080B72]/20 shadow-xs"
+                style={{ padding: '22px 24px' }}
+              >
                 <span className="block text-[10px] font-mono uppercase tracking-widest text-[#080B72]/50 mb-1.5">
                   Global Availability &amp; Response Time
                 </span>
@@ -176,7 +182,10 @@ export default function ContactSection() {
 
           {/* Right Column — Elevated Form Card */}
           <div ref={formRef} className="lg:col-span-7">
-            <div className="p-8 sm:p-10 lg:p-12 rounded-2xl bg-white border border-[#080B72]/15 shadow-sm">
+            <div
+              className="rounded-2xl bg-white border border-[#080B72]/15 shadow-sm"
+              style={{ padding: 'clamp(28px, 4vw, 44px)' }}
+            >
               {submitted ? (
                 <div className="flex flex-col items-start justify-center py-12">
                   <div className="w-12 h-12 rounded-full bg-emerald-100 text-emerald-800 flex items-center justify-center font-bold text-xl mb-6">
@@ -233,7 +242,7 @@ export default function ContactSection() {
                     <FormField label="Project / Solution Category">
                       <div className="relative">
                         <select
-                          className="form-input pr-8 cursor-pointer"
+                          className="form-input pr-8 cursor-pointer appearance-none"
                           value={formData.projectType}
                           onChange={(e) => handleChange('projectType', e.target.value)}
                         >
@@ -244,6 +253,11 @@ export default function ContactSection() {
                             </option>
                           ))}
                         </select>
+                        <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2 text-[#080B72]/60">
+                          <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+                            <path d="M2.5 4.5L6 8L9.5 4.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                          </svg>
+                        </div>
                       </div>
                     </FormField>
 

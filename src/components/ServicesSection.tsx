@@ -85,8 +85,9 @@ function ServiceCard({ service, index }: { service: (typeof services)[0]; index:
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       onClick={handleInquire}
-      className="group relative flex flex-col justify-between p-8 sm:p-9 lg:p-10 pb-16 sm:pb-18 rounded-2xl transition-all duration-300 cursor-pointer h-full overflow-hidden"
+      className="group relative flex flex-col justify-between rounded-2xl transition-all duration-300 cursor-pointer overflow-hidden w-full"
       style={{
+        padding: '32px 28px 56px 28px',
         background: hovered ? '#080B72' : 'rgba(255, 255, 255, 0.85)',
         color: hovered ? '#F7F7F5' : '#05062F',
         border: `1px solid ${hovered ? '#080B72' : 'rgba(8, 11, 114, 0.12)'}`,
@@ -121,7 +122,7 @@ function ServiceCard({ service, index }: { service: (typeof services)[0]; index:
 
         {/* Description */}
         <p
-          className="text-sm sm:text-[0.95rem] leading-[1.75] mb-6 font-light transition-opacity"
+          className="text-sm sm:text-[0.95rem] leading-[1.75] mb-6 font-light transition-opacity sm:min-h-[72px]"
           style={{ opacity: hovered ? 0.85 : 0.65 }}
         >
           {service.description}
