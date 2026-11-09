@@ -128,7 +128,7 @@ function ServiceCard({ service, index }: { service: (typeof services)[0]; index:
         </p>
 
         {/* Tags */}
-        <div className="flex flex-wrap gap-2">
+        <div className="flex flex-wrap gap-2 pr-14 sm:pr-16">
           {service.tags.map((tag) => (
             <span
               key={tag}

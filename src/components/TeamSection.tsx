@@ -171,7 +171,7 @@ function TeamCard({ member, index }: { member: TeamMember; index: number }) {
         </p>
 
         {/* Specialty Tags */}
-        <div className="flex flex-wrap gap-2">
+        <div className="flex flex-wrap gap-2 pr-28 sm:pr-36">
           {member.tags.map((tag) => (
             <span
               key={tag}

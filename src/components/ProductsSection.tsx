@@ -103,26 +103,26 @@ function ProductCard({ product, index }: { product: (typeof products)[0]; index:
       ref={cardRef}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
-      className="group relative flex flex-col justify-between p-6 sm:p-7 lg:p-8 rounded-2xl transition-all duration-300 h-full min-h-[360px] sm:min-h-[380px]"
+      className="group relative flex flex-col justify-between p-5 sm:p-6 rounded-2xl transition-all duration-300 h-full"
       style={{
         background: hovered ? 'rgba(8, 11, 114, 0.55)' : 'rgba(255, 255, 255, 0.035)',
         border: `1px solid ${hovered ? 'rgba(247, 247, 245, 0.35)' : 'rgba(247, 247, 245, 0.1)'}`,
         transform: hovered ? 'translateY(-4px)' : 'translateY(0)',
-        boxShadow: hovered ? '0 24px 48px -12px rgba(0, 0, 0, 0.6)' : 'none',
+        boxShadow: hovered ? '0 20px 40px -12px rgba(0, 0, 0, 0.6)' : 'none',
       }}
     >
       {/* 1. Header: Category badge & development status */}
-      <div className="flex items-center justify-between gap-3 mb-5">
-        <span className="px-3 py-1 rounded-full text-[10px] font-mono font-semibold tracking-wider uppercase text-[#F7F7F5]/85 bg-white/10 border border-white/15">
+      <div className="flex items-center justify-between gap-3 mb-3">
+        <span className="px-2.5 py-0.5 rounded-full text-[10px] font-mono font-semibold tracking-wider uppercase text-[#F7F7F5]/85 bg-white/10 border border-white/15">
           {product.category}
         </span>
 
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-1.5">
           <span
-            className="w-2 h-2 rounded-full"
+            className="w-1.5 h-1.5 rounded-full"
             style={{
               backgroundColor: product.statusColor,
-              boxShadow: `0 0 8px ${product.statusColor}`,
+              boxShadow: `0 0 6px ${product.statusColor}`,
             }}
           />
           <span className="text-[10px] font-mono font-medium tracking-wider uppercase text-[#F7F7F5]/70">
@@ -133,20 +133,20 @@ function ProductCard({ product, index }: { product: (typeof products)[0]; index:
 
       {/* 2. Content: Product title, description and feature tags */}
       <div className="flex-1 flex flex-col">
-        <h3 className="text-xl sm:text-2xl font-bold tracking-tight text-[#F7F7F5] mb-3 leading-snug group-hover:text-white transition-colors">
+        <h3 className="text-lg sm:text-xl font-bold tracking-tight text-[#F7F7F5] mb-2 leading-snug group-hover:text-white transition-colors">
           {product.name}
         </h3>
 
-        <p className="text-sm leading-relaxed text-[#F7F7F5]/75 font-light mb-5">
+        <p className="text-xs sm:text-[13px] leading-relaxed text-[#F7F7F5]/75 font-light mb-3.5">
           {product.description}
         </p>
 
-        {/* Feature Tags - naturally wrap with flexible gap */}
-        <div className="flex flex-wrap gap-2 mb-6">
+        {/* Feature Tags - naturally wrap with compact gaps */}
+        <div className="flex flex-wrap gap-1.5 mb-4">
           {product.tags.map((tag) => (
             <span
               key={tag}
-              className="text-[10px] font-mono px-2.5 py-1 rounded bg-white/5 text-[#F7F7F5]/80 border border-white/10"
+              className="text-[10px] font-mono px-2 py-0.5 rounded bg-white/5 text-[#F7F7F5]/80 border border-white/10"
             >
               {tag}
             </span>
@@ -155,7 +155,7 @@ function ProductCard({ product, index }: { product: (typeof products)[0]; index:
       </div>
 
       {/* 3. Footer: Development stage and Early Access CTA aligned consistently with mt-auto */}
-      <div className="mt-auto pt-5 border-t border-white/10 flex items-center justify-between gap-3">
+      <div className="mt-auto pt-3 border-t border-white/10 flex items-center justify-between gap-2">
         <span className="text-[10px] font-mono tracking-wider uppercase text-[#F7F7F5]/55 group-hover:text-[#F7F7F5]/85 transition-colors">
           {product.status}
         </span>
@@ -163,7 +163,7 @@ function ProductCard({ product, index }: { product: (typeof products)[0]; index:
         <button
           type="button"
           onClick={handleInquire}
-          className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg text-xs font-mono font-semibold text-white tracking-wider uppercase transition-all duration-300 hover:bg-white/15 cursor-pointer bg-white/5 border border-white/15"
+          className="inline-flex items-center gap-1.5 px-3 py-1 rounded-md text-[11px] font-mono font-semibold text-white tracking-wider uppercase transition-all duration-300 hover:bg-white/15 cursor-pointer bg-white/5 border border-white/15"
         >
           <span>Early Access</span>
           <svg
@@ -244,7 +244,7 @@ export default function ProductsSection() {
         </div>
 
         {/* Product Grid - Responsive CSS Grid: 3 cols on desktop, 2 cols on tablet, 1 col on mobile */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-7 lg:gap-8 items-stretch">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6 items-stretch">
           {products.map((product, i) => (
             <ProductCard key={product.name} product={product} index={i} />
           ))}
