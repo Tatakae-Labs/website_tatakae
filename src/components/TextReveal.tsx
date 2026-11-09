@@ -49,12 +49,15 @@ export default function TextReveal({
       {words.map((word, wIdx) => (
         <span
           key={wIdx}
-          className="inline-flex overflow-hidden mr-[0.3em] pt-1 pb-1 -mt-1 -mb-1"
-          style={{ verticalAlign: 'baseline' }}
+          className="inline-flex overflow-hidden pt-1 pb-1 -mt-1 -mb-1"
+          style={{
+            marginRight: wIdx < words.length - 1 ? '0.35em' : '0',
+            verticalAlign: 'baseline',
+          }}
         >
           {word.split('').map((char, cIdx) => {
             const currentIdx = charCounter++;
-            const charDelay = delay + currentIdx * 30;
+            const charDelay = delay + currentIdx * 35;
             return (
               <span
                 key={cIdx}
@@ -62,7 +65,7 @@ export default function TextReveal({
                 style={{
                   transform: isVisible ? 'translateY(0%)' : 'translateY(110%)',
                   opacity: isVisible ? 1 : 0,
-                  transition: `transform 0.85s cubic-bezier(0.16, 1, 0.3, 1) ${charDelay}ms, opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1) ${charDelay}ms`,
+                  transition: `transform 0.8s cubic-bezier(0.16, 1, 0.3, 1) ${charDelay}ms, opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1) ${charDelay}ms`,
                   lineHeight: 'inherit',
                 }}
               >

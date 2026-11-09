@@ -35,7 +35,7 @@ export default function Loader({ onComplete }: LoaderProps) {
 
     let frame: number;
     let start: number | null = null;
-    const DURATION = 2400; // ~2.4 seconds
+    const DURATION = 1600; // Crisp, high-end studio entrance (~1.6s)
 
     const animate = (timestamp: number) => {
       if (!start) start = timestamp;
