@@ -45,13 +45,16 @@ export default function TextReveal({
   let charCounter = 0;
 
   return (
-    <Tag ref={containerRef as any} className={`inline-flex flex-wrap items-baseline ${className}`}>
+    <Tag
+      ref={containerRef as any}
+      className={`inline-flex flex-wrap items-baseline ${className}`}
+      style={{ columnGap: '0.35em' }}
+    >
       {words.map((word, wIdx) => (
         <span
           key={wIdx}
           className="inline-flex overflow-hidden pt-1 pb-1 -mt-1 -mb-1"
           style={{
-            marginRight: wIdx < words.length - 1 ? '0.35em' : '0',
             verticalAlign: 'baseline',
           }}
         >

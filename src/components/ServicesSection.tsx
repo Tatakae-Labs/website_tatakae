@@ -79,18 +79,18 @@ function ServiceCard({ service, index }: { service: (typeof services)[0]; index:
       ref={cardRef}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
-      className="group relative flex flex-col justify-between p-8 sm:p-9 rounded-2xl transition-all duration-400 cursor-default h-full min-h-[340px]"
+      className="group relative flex flex-col justify-between p-6 sm:p-7 rounded-2xl transition-all duration-400 cursor-default h-full"
       style={{
-        background: hovered ? '#080B72' : 'rgba(255, 255, 255, 0.7)',
+        background: hovered ? '#080B72' : 'rgba(255, 255, 255, 0.75)',
         color: hovered ? '#F7F7F5' : '#05062F',
         border: `1px solid ${hovered ? '#080B72' : 'rgba(8, 11, 114, 0.12)'}`,
-        transform: hovered ? 'translateY(-6px)' : 'translateY(0)',
+        transform: hovered ? 'translateY(-4px)' : 'translateY(0)',
         boxShadow: hovered ? '0 20px 36px -12px rgba(8, 11, 114, 0.25)' : '0 2px 8px -2px rgba(8, 11, 114, 0.04)',
       }}
     >
-      <div className="flex flex-col flex-1">
+      <div>
         {/* Number Bar */}
-        <div className="flex items-center justify-between mb-6">
+        <div className="flex items-center justify-between mb-4">
           <span
             className="font-mono text-xs font-semibold tracking-widest uppercase transition-opacity"
             style={{ opacity: hovered ? 0.7 : 0.4 }}
@@ -121,13 +121,13 @@ function ServiceCard({ service, index }: { service: (typeof services)[0]; index:
         </div>
 
         {/* Title */}
-        <h3 className="text-xl sm:text-2xl font-bold tracking-tight mb-3 leading-snug">
+        <h3 className="text-lg sm:text-xl font-bold tracking-tight mb-2.5 leading-snug">
           {service.title}
         </h3>
 
         {/* Description */}
         <p
-          className="text-sm leading-relaxed mb-6 font-light transition-opacity flex-1"
+          className="text-xs sm:text-sm leading-relaxed mb-5 font-light transition-opacity"
           style={{ opacity: hovered ? 0.85 : 0.65 }}
         >
           {service.description}
@@ -135,11 +135,14 @@ function ServiceCard({ service, index }: { service: (typeof services)[0]; index:
       </div>
 
       {/* Tags */}
-      <div className="flex flex-wrap gap-1.5 pt-5 border-t mt-auto" style={{ borderColor: hovered ? 'rgba(247, 247, 245, 0.15)' : 'rgba(8, 11, 114, 0.08)' }}>
+      <div
+        className="flex flex-wrap gap-1.5 pt-4 border-t mt-auto"
+        style={{ borderColor: hovered ? 'rgba(247, 247, 245, 0.15)' : 'rgba(8, 11, 114, 0.08)' }}
+      >
         {service.tags.map((tag) => (
           <span
             key={tag}
-            className="text-[10px] font-mono px-2.5 py-1 rounded-full border transition-all"
+            className="text-[10px] font-mono px-2.5 py-0.5 rounded-full border transition-all"
             style={{
               borderColor: hovered ? 'rgba(247, 247, 245, 0.25)' : 'rgba(8, 11, 114, 0.15)',
               color: hovered ? '#F7F7F5' : '#080B72',
@@ -185,7 +188,7 @@ export default function ServicesSection() {
           <div>
             <div className="flex items-center gap-4 mb-6">
               <span className="text-[11px] font-mono font-semibold tracking-widest uppercase text-[#080B72]/60">
-                01 / Capabilities & Services
+                01 / Capabilities &amp; Services
               </span>
               <div className="flex-1 max-w-[80px] h-[1px] bg-[#080B72]/15" />
             </div>
@@ -202,7 +205,7 @@ export default function ServicesSection() {
         </div>
 
         {/* Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6 items-stretch">
           {services.map((service, i) => (
             <ServiceCard key={service.number} service={service} index={i} />
           ))}

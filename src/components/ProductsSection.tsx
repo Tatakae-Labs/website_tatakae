@@ -61,7 +61,7 @@ const products = [
     status: 'In Development',
     statusColor: '#818CF8',
     badge: 'Beta Q3',
-    tags: ['Autonomous Agents', 'RAG Pipelines', 'Tool Execution'],
+    tags: ['Autonomous Agents', 'RAG Meshes', 'Tool Execution'],
   },
 ];
 
@@ -103,17 +103,17 @@ function ProductCard({ product, index }: { product: (typeof products)[0]; index:
       ref={cardRef}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
-      className="group relative flex flex-col justify-between p-8 sm:p-9 rounded-2xl transition-all duration-300 h-full min-h-[380px]"
+      className="group relative flex flex-col justify-between p-6 sm:p-7 rounded-2xl transition-all duration-300 h-full"
       style={{
-        background: hovered ? 'rgba(8, 11, 114, 0.5)' : 'rgba(255, 255, 255, 0.04)',
-        border: `1px solid ${hovered ? 'rgba(247, 247, 245, 0.3)' : 'rgba(247, 247, 245, 0.12)'}`,
-        transform: hovered ? 'translateY(-6px)' : 'translateY(0)',
-        boxShadow: hovered ? '0 24px 48px -12px rgba(0, 0, 0, 0.6)' : 'none',
+        background: hovered ? 'rgba(8, 11, 114, 0.45)' : 'rgba(255, 255, 255, 0.035)',
+        border: `1px solid ${hovered ? 'rgba(247, 247, 245, 0.28)' : 'rgba(247, 247, 245, 0.1)'}`,
+        transform: hovered ? 'translateY(-4px)' : 'translateY(0)',
+        boxShadow: hovered ? '0 20px 40px -15px rgba(0, 0, 0, 0.5)' : 'none',
       }}
     >
-      <div className="flex flex-col flex-1">
+      <div>
         {/* Top Bar: Category Pill & Status Beacon */}
-        <div className="flex items-center justify-between gap-3 mb-5">
+        <div className="flex items-center justify-between gap-3 mb-4">
           <span className="px-3 py-1 rounded-full text-[10px] font-mono font-semibold tracking-wider uppercase text-[#F7F7F5]/85 bg-white/10 border border-white/15">
             {product.category}
           </span>
@@ -133,21 +133,21 @@ function ProductCard({ product, index }: { product: (typeof products)[0]; index:
         </div>
 
         {/* Product Name */}
-        <h3 className="text-2xl sm:text-[1.75rem] font-bold tracking-tight text-[#F7F7F5] mb-3 leading-snug group-hover:text-white transition-colors">
+        <h3 className="text-xl sm:text-2xl font-bold tracking-tight text-[#F7F7F5] mb-2.5 leading-snug group-hover:text-white transition-colors">
           {product.name}
         </h3>
 
         {/* Description */}
-        <p className="text-sm leading-relaxed text-[#F7F7F5]/75 font-light mb-6 flex-1">
+        <p className="text-xs sm:text-sm leading-relaxed text-[#F7F7F5]/75 font-light mb-4">
           {product.description}
         </p>
 
         {/* Tags */}
-        <div className="flex flex-wrap gap-2 mb-6">
+        <div className="flex flex-wrap gap-1.5 mb-5">
           {product.tags.map((tag) => (
             <span
               key={tag}
-              className="text-[11px] font-mono px-2.5 py-1 rounded-md bg-white/5 text-[#F7F7F5]/80 border border-white/10"
+              className="text-[10px] font-mono px-2.5 py-0.5 rounded bg-white/5 text-[#F7F7F5]/80 border border-white/10"
             >
               {tag}
             </span>
@@ -155,9 +155,9 @@ function ProductCard({ product, index }: { product: (typeof products)[0]; index:
         </div>
       </div>
 
-      {/* Card Action Footer - Cleanly aligned at the bottom */}
-      <div className="pt-5 border-t border-white/10 flex items-center justify-between mt-auto">
-        <span className="text-[11px] font-mono tracking-wider uppercase text-[#F7F7F5]/55 group-hover:text-[#F7F7F5]/85 transition-colors">
+      {/* Card Action Footer */}
+      <div className="pt-4 border-t border-white/10 flex items-center justify-between mt-auto">
+        <span className="text-[10px] font-mono tracking-wider uppercase text-[#F7F7F5]/55 group-hover:text-[#F7F7F5]/85 transition-colors">
           {product.status}
         </span>
 
@@ -241,15 +241,15 @@ export default function ProductsSection() {
           </p>
         </div>
 
-        {/* Product Grid - Perfectly balanced 3x2 grid on desktop */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 items-stretch">
+        {/* Product Grid - Compact, balanced 3x2 grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6 items-stretch">
           {products.map((product, i) => (
             <ProductCard key={product.name} product={product} index={i} />
           ))}
         </div>
 
         {/* Bottom Note & CTA Bar */}
-        <div className="mt-16 pt-8 border-t border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div className="mt-12 sm:mt-16 pt-8 border-t border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <div className="flex items-center gap-3">
             <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
             <p className="text-xs font-mono text-[#F7F7F5]/60 uppercase tracking-wider">
