@@ -143,15 +143,6 @@ export default function ContactSection() {
                   tatakaelabs@gmail.com
                 </a>
               </div>
-
-              <div className="p-5 rounded-xl border border-[#080B72]/10 bg-white/50 backdrop-blur-xs">
-                <span className="block text-[10px] font-mono uppercase tracking-widest text-[#080B72]/50 mb-1">
-                  Global Availability & Response Time
-                </span>
-                <p className="text-sm font-medium text-[#05062F]">
-                  Operating from Bengaluru, India · Guaranteed reply within 24 hours
-                </p>
-              </div>
             </div>
 
             {/* Social channels */}

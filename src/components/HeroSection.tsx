@@ -57,22 +57,6 @@ export default function HeroSection() {
       {/* Hero Content positioned comfortably in the lower viewport half */}
       <div className="relative z-10 section-padding pt-0" style={{ paddingTop: '0', paddingBottom: '0' }}>
         <div className="max-w-[1600px] mx-auto">
-          {/* Status Tag */}
-          <div className="mb-6 sm:mb-8">
-            <span
-              className="tag-pill"
-              style={{
-                color: '#080B72',
-                borderColor: 'rgba(8,11,114,0.3)',
-                background: 'rgba(8,11,114,0.04)',
-                fontSize: '0.68rem',
-                letterSpacing: '0.12em',
-              }}
-            >
-              ● Available for Projects · Est. 2024 · Software &amp; SaaS Innovation Studio
-            </span>
-          </div>
-
           {/* Headline with animated character reveal and guaranteed word spacing */}
           <div className="mb-6 sm:mb-8">
             <h1 className="text-display" style={{ color: '#080B72', maxWidth: '1050px' }}>
