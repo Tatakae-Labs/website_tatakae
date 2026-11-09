@@ -1,7 +1,6 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
-import { animate, stagger } from 'animejs';
+import { useEffect, useRef, useState } from 'react';
 
 interface TextRevealProps {
   text: string;
@@ -17,32 +16,21 @@ export default function TextReveal({
   as: Tag = 'h2',
 }: TextRevealProps) {
   const containerRef = useRef<HTMLElement>(null);
+  const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
     const el = containerRef.current;
     if (!el) return;
 
-    const letters = el.querySelectorAll<HTMLElement>('.char');
-
-    // Check reduced motion — immediately reveal text
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      letters.forEach((letter) => {
-        letter.style.transform = 'none';
-        letter.style.opacity = '1';
-      });
+      setIsVisible(true);
       return;
     }
 
     const observer = new IntersectionObserver(
       (entries) => {
         if (entries[0].isIntersecting) {
-          animate(letters, {
-            translateY: ['110%', '0%'],
-            opacity: [0, 1],
-            delay: stagger(28, { start: delay }),
-            ease: 'outExpo',
-            duration: 900,
-          });
+          setIsVisible(true);
           observer.disconnect();
         }
       },
@@ -51,35 +39,39 @@ export default function TextReveal({
 
     observer.observe(el);
     return () => observer.disconnect();
-  }, [delay]);
+  }, []);
 
-  // Split words and characters preserving natural space
   const words = text.split(' ');
+  let charCounter = 0;
 
   return (
     <Tag ref={containerRef as any} className={`inline-flex flex-wrap items-baseline ${className}`}>
       {words.map((word, wIdx) => (
         <span
           key={wIdx}
-          className="inline-flex overflow-hidden mr-[0.32em] pt-1 pb-1 -mt-1 -mb-1"
+          className="inline-flex overflow-hidden mr-[0.3em] pt-1 pb-1 -mt-1 -mb-1"
           style={{ verticalAlign: 'baseline' }}
         >
-          {word.split('').map((char, cIdx) => (
-            <span
-              key={cIdx}
-              className="char inline-block will-change-transform"
-              style={{
-                transform: 'translateY(110%)',
-                opacity: 0,
-                lineHeight: 'inherit',
-              }}
-            >
-              {char}
-            </span>
-          ))}
+          {word.split('').map((char, cIdx) => {
+            const currentIdx = charCounter++;
+            const charDelay = delay + currentIdx * 30;
+            return (
+              <span
+                key={cIdx}
+                className="char inline-block will-change-transform"
+                style={{
+                  transform: isVisible ? 'translateY(0%)' : 'translateY(110%)',
+                  opacity: isVisible ? 1 : 0,
+                  transition: `transform 0.85s cubic-bezier(0.16, 1, 0.3, 1) ${charDelay}ms, opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1) ${charDelay}ms`,
+                  lineHeight: 'inherit',
+                }}
+              >
+                {char}
+              </span>
+            );
+          })}
         </span>
       ))}
     </Tag>
   );
 }
-

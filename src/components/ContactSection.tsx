@@ -72,10 +72,10 @@ export default function ContactSection() {
     if (!formData.email.trim()) {
       newErrors.email = 'Email is required';
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
-      newErrors.email = 'Please enter a valid email';
+      newErrors.email = 'Please enter a valid email address';
     }
     if (!formData.description.trim()) {
-      newErrors.description = 'Please describe your project';
+      newErrors.description = 'Please describe your project or requirements';
     }
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
@@ -86,8 +86,8 @@ export default function ContactSection() {
     if (!validate()) return;
 
     setSubmitting(true);
-    // Simulate API call — replace with real endpoint
-    await new Promise((resolve) => setTimeout(resolve, 1200));
+    // Simulate API call
+    await new Promise((resolve) => setTimeout(resolve, 1000));
     setSubmitting(false);
     setSubmitted(true);
   };
@@ -103,21 +103,21 @@ export default function ContactSection() {
     <section
       ref={sectionRef}
       id="contact"
-      className="section-padding"
-      style={{ background: '#F7F7F5' }}
+      className="section-padding bg-[#F7F7F5] relative"
     >
       <div className="max-w-[1600px] mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-20">
-          {/* Left */}
-          <div ref={titleRef}>
-            <div className="flex items-center gap-4 mb-8">
-              <span style={{ opacity: 0.4, fontSize: '0.65rem', letterSpacing: '0.15em', fontWeight: 500, textTransform: 'uppercase', color: '#080B72' }}>
-                06 / Contact
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+          
+          {/* Left Column */}
+          <div ref={titleRef} className="lg:col-span-5">
+            <div className="flex items-center gap-4 mb-6">
+              <span className="text-[11px] font-mono font-semibold tracking-widest uppercase text-[#080B72]/60">
+                05 / Start a Project
               </span>
-              <div style={{ flex: 1, maxWidth: '80px', height: '1px', background: 'rgba(8,11,114,0.15)' }} />
+              <div className="flex-1 max-w-[80px] h-[1px] bg-[#080B72]/15" />
             </div>
 
-            <h2 className="text-headline" style={{ color: '#080B72', marginBottom: '32px' }}>
+            <h2 className="text-headline text-[#080B72] tracking-tight mb-8">
               HAVE AN IDEA?
               <br />
               LET&apos;S MAKE
@@ -125,159 +125,160 @@ export default function ContactSection() {
               IT REAL.
             </h2>
 
-            <p className="text-body" style={{ color: '#05062F', opacity: 0.55, marginBottom: '48px', maxWidth: '380px' }}>
-              Whether you have a fully formed concept or just a kernel of an idea —
-              we would love to hear it. Tell us what you&apos;re working on and
-              let&apos;s figure out if we can build it together.
+            <p className="text-body text-[#05062F]/70 mb-10 max-w-md text-base sm:text-lg leading-relaxed">
+              Whether you have an architectural specification ready or just a concept
+              looking for engineering guidance — let&apos;s build something exceptional together.
             </p>
 
-            {/* Contact info */}
-            <div className="flex flex-col gap-6">
-              <div>
-                <p style={{ fontSize: '0.65rem', letterSpacing: '0.12em', color: '#080B72', opacity: 0.4, textTransform: 'uppercase', marginBottom: '4px' }}>
-                  Email
-                </p>
+            {/* Direct Channel Cards */}
+            <div className="space-y-4">
+              <div className="p-5 rounded-xl border border-[#080B72]/10 bg-white/50 backdrop-blur-xs">
+                <span className="block text-[10px] font-mono uppercase tracking-widest text-[#080B72]/50 mb-1">
+                  Direct Inquiries & Project RFPs
+                </span>
                 <a
                   href="mailto:tatakaelabs@gmail.com"
-                  className="hover-underline"
-                  style={{ fontSize: '1rem', fontWeight: 500, color: '#080B72', textDecoration: 'none' }}
+                  className="text-base sm:text-lg font-bold text-[#080B72] hover:underline"
                 >
                   tatakaelabs@gmail.com
                 </a>
               </div>
 
-              {/* Social links */}
-              <div className="flex gap-6 mt-4">
-                {[
-                  { label: 'LinkedIn', href: '#' },
-                  { label: 'Twitter / X', href: '#' },
-                  { label: 'GitHub', href: '#' },
-                ].map((social) => (
-                  <a
-                    key={social.label}
-                    href={social.href}
-                    className="hover-underline"
-                    style={{
-                      fontSize: '0.75rem',
-                      fontWeight: 500,
-                      letterSpacing: '0.06em',
-                      color: '#080B72',
-                      opacity: 0.5,
-                      textDecoration: 'none',
-                      textTransform: 'uppercase',
-                      transition: 'opacity 0.3s ease',
-                    }}
-                    onMouseEnter={(e) => { e.currentTarget.style.opacity = '1'; }}
-                    onMouseLeave={(e) => { e.currentTarget.style.opacity = '0.5'; }}
-                  >
-                    {social.label}
-                  </a>
-                ))}
+              <div className="p-5 rounded-xl border border-[#080B72]/10 bg-white/50 backdrop-blur-xs">
+                <span className="block text-[10px] font-mono uppercase tracking-widest text-[#080B72]/50 mb-1">
+                  Global Availability & Response Time
+                </span>
+                <p className="text-sm font-medium text-[#05062F]">
+                  Operating from Bengaluru, India · Guaranteed reply within 24 hours
+                </p>
               </div>
+            </div>
+
+            {/* Social channels */}
+            <div className="flex items-center gap-6 mt-8">
+              {[
+                { label: 'LinkedIn', href: 'https://linkedin.com' },
+                { label: 'Twitter / X', href: 'https://x.com' },
+                { label: 'GitHub', href: 'https://github.com' },
+              ].map((social) => (
+                <a
+                  key={social.label}
+                  href={social.href}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="text-xs font-mono font-semibold tracking-wider uppercase text-[#080B72]/60 hover:text-[#080B72] transition-colors"
+                >
+                  {social.label} ↗
+                </a>
+              ))}
             </div>
           </div>
 
-          {/* Right — Form */}
-          <div ref={formRef}>
-            {submitted ? (
-              <div
-                className="flex flex-col items-start justify-center h-full"
-                style={{ minHeight: '400px' }}
-              >
-                <div style={{ fontSize: '3rem', marginBottom: '24px' }}>◈</div>
-                <h3 style={{ fontSize: 'clamp(1.5rem, 3vw, 2.5rem)', fontWeight: 700, color: '#080B72', letterSpacing: '-0.02em', marginBottom: '16px' }}>
-                  Message Received.
-                </h3>
-                <p style={{ fontSize: '1rem', color: '#05062F', opacity: 0.55, lineHeight: 1.7, maxWidth: '360px' }}>
-                  Thank you for reaching out. We&apos;ll review your message and get back
-                  to you within 24 hours.
-                </p>
-              </div>
-            ) : (
-              <form onSubmit={handleSubmit} noValidate>
-                <div className="flex flex-col gap-2">
-                  {/* Name */}
-                  <FormField label="Your Name *" error={errors.name}>
-                    <input
-                      className="form-input"
-                      type="text"
-                      placeholder="John Doe"
-                      value={formData.name}
-                      onChange={(e) => handleChange('name', e.target.value)}
-                      autoComplete="name"
-                    />
-                  </FormField>
-
-                  {/* Email */}
-                  <FormField label="Email Address *" error={errors.email}>
-                    <input
-                      className="form-input"
-                      type="email"
-                      placeholder="john@company.com"
-                      value={formData.email}
-                      onChange={(e) => handleChange('email', e.target.value)}
-                      autoComplete="email"
-                    />
-                  </FormField>
-
-                  {/* Company */}
-                  <FormField label="Company / Organisation">
-                    <input
-                      className="form-input"
-                      type="text"
-                      placeholder="Your company name"
-                      value={formData.company}
-                      onChange={(e) => handleChange('company', e.target.value)}
-                      autoComplete="organization"
-                    />
-                  </FormField>
-
-                  {/* Project Type */}
-                  <FormField label="Project Type">
-                    <select
-                      className="form-input"
-                      value={formData.projectType}
-                      onChange={(e) => handleChange('projectType', e.target.value)}
-                      style={{ cursor: 'pointer', appearance: 'none' }}
-                    >
-                      <option value="">Select a project type...</option>
-                      {projectTypes.map((type) => (
-                        <option key={type} value={type}>{type}</option>
-                      ))}
-                    </select>
-                  </FormField>
-
-                  {/* Description */}
-                  <FormField label="Tell Us About Your Project *" error={errors.description}>
-                    <textarea
-                      className="form-input"
-                      placeholder="Describe your idea, challenge or what you want to build..."
-                      value={formData.description}
-                      onChange={(e) => handleChange('description', e.target.value)}
-                      rows={4}
-                      style={{ resize: 'vertical', minHeight: '100px' }}
-                    />
-                  </FormField>
-
-                  {/* Submit */}
-                  <div className="mt-6">
-                    <button
-                      type="submit"
-                      className="btn-primary"
-                      disabled={submitting}
-                      style={{ opacity: submitting ? 0.7 : 1, cursor: submitting ? 'wait' : 'pointer' }}
-                    >
-                      {submitting ? 'Sending...' : 'Send Message'}
-                      {!submitting && (
-                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden>
-                          <path d="M1 7h12M7 1l6 6-6 6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
-                        </svg>
-                      )}
-                    </button>
+          {/* Right Column — Elevated Form Card */}
+          <div ref={formRef} className="lg:col-span-7">
+            <div className="p-8 sm:p-10 lg:p-12 rounded-2xl bg-white border border-[#080B72]/15 shadow-sm">
+              {submitted ? (
+                <div className="flex flex-col items-start justify-center py-12">
+                  <div className="w-12 h-12 rounded-full bg-emerald-100 text-emerald-800 flex items-center justify-center font-bold text-xl mb-6">
+                    ✓
                   </div>
+                  <h3 className="text-2xl sm:text-3xl font-bold text-[#080B72] tracking-tight mb-3">
+                    Inquiry Received.
+                  </h3>
+                  <p className="text-base text-[#05062F]/70 leading-relaxed max-w-md">
+                    Thank you for reaching out to TATAKAE LABS. Our engineering directors will
+                    review your brief and schedule an initial discovery call within 24 hours.
+                  </p>
                 </div>
-              </form>
-            )}
+              ) : (
+                <form onSubmit={handleSubmit} noValidate>
+                  <div className="space-y-6">
+                    {/* Name */}
+                    <FormField label="Your Full Name *" error={errors.name}>
+                      <input
+                        className="form-input"
+                        type="text"
+                        placeholder="e.g. John Doe"
+                        value={formData.name}
+                        onChange={(e) => handleChange('name', e.target.value)}
+                        autoComplete="name"
+                      />
+                    </FormField>
+
+                    {/* Email */}
+                    <FormField label="Business Email *" error={errors.email}>
+                      <input
+                        className="form-input"
+                        type="email"
+                        placeholder="john@company.com"
+                        value={formData.email}
+                        onChange={(e) => handleChange('email', e.target.value)}
+                        autoComplete="email"
+                      />
+                    </FormField>
+
+                    {/* Company */}
+                    <FormField label="Company / Organisation">
+                      <input
+                        className="form-input"
+                        type="text"
+                        placeholder="Acme Corp"
+                        value={formData.company}
+                        onChange={(e) => handleChange('company', e.target.value)}
+                        autoComplete="organization"
+                      />
+                    </FormField>
+
+                    {/* Project Type */}
+                    <FormField label="Project / Solution Category">
+                      <div className="relative">
+                        <select
+                          className="form-input pr-8 cursor-pointer"
+                          value={formData.projectType}
+                          onChange={(e) => handleChange('projectType', e.target.value)}
+                        >
+                          <option value="">Select scope or service area...</option>
+                          {projectTypes.map((type) => (
+                            <option key={type} value={type}>
+                              {type}
+                            </option>
+                          ))}
+                        </select>
+                      </div>
+                    </FormField>
+
+                    {/* Description */}
+                    <FormField label="Tell Us About Your Goals & Timeline *" error={errors.description}>
+                      <textarea
+                        className="form-input"
+                        placeholder="Describe your vision, technical requirements, or problem to solve..."
+                        value={formData.description}
+                        onChange={(e) => handleChange('description', e.target.value)}
+                        rows={4}
+                        style={{ resize: 'vertical', minHeight: '110px' }}
+                      />
+                    </FormField>
+
+                    {/* Submit Button */}
+                    <div className="pt-4">
+                      <button
+                        type="submit"
+                        className="btn-primary w-full sm:w-auto justify-center px-10 py-4 text-xs font-semibold tracking-widest uppercase cursor-pointer"
+                        disabled={submitting}
+                        style={{ opacity: submitting ? 0.7 : 1 }}
+                      >
+                        {submitting ? 'Transmitting Brief...' : 'Send Project Inquiry'}
+                        {!submitting && (
+                          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                            <path d="M1 7h12M7 1l6 6-6 6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+                          </svg>
+                        )}
+                      </button>
+                    </div>
+                  </div>
+                </form>
+              )}
+            </div>
           </div>
         </div>
       </div>
@@ -295,26 +296,12 @@ function FormField({
   children: React.ReactNode;
 }) {
   return (
-    <div style={{ paddingBottom: '4px' }}>
-      <label style={{
-        display: 'block',
-        fontSize: '0.65rem',
-        fontWeight: 500,
-        letterSpacing: '0.12em',
-        color: '#080B72',
-        opacity: 0.5,
-        textTransform: 'uppercase',
-        marginBottom: '2px',
-      }}>
+    <div>
+      <label className="block text-[11px] font-mono font-semibold tracking-wider text-[#080B72]/70 uppercase mb-2">
         {label}
       </label>
       {children}
-      {error && (
-        <p style={{ fontSize: '0.72rem', color: '#cc3333', marginTop: '4px' }}>
-          {error}
-        </p>
-      )}
+      {error && <p className="text-xs text-rose-600 mt-1 font-mono">{error}</p>}
     </div>
   );
 }
-

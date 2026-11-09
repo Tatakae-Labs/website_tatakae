@@ -5,42 +5,57 @@ import { useRef, useEffect, useState } from 'react';
 const products = [
   {
     name: 'CRM Platform',
-    description: 'An intelligent customer relationship management system built for growing sales teams. Manage leads, track interactions, and automate follow-ups with ease.',
-    category: 'Customer Relationship Management',
+    description:
+      'An intelligent customer relationship management engine engineered for high-velocity sales teams. Streamline lead capture, automate follow-up sequences, and gain deep pipeline visibility.',
+    category: 'Sales & Growth',
     status: 'In Development',
-    statusColor: '#080B72',
+    statusColor: '#34D399',
+    badge: 'Alpha Q2',
+    tags: ['AI Lead Scoring', 'Pipeline Automation', 'Omnichannel Sync'],
   },
   {
     name: 'Assessment Engine',
-    description: 'A powerful examination and assessment platform for educational institutions and coaching institutes. Adaptive testing, instant results, and detailed analytics.',
-    category: 'Assessment & Examination',
+    description:
+      'Enterprise-grade examination, testing, and evaluation engine built for institutions and academies. Features adaptive question banks, real-time telemetry, and instant analytics.',
+    category: 'EdTech & Testing',
     status: 'In Development',
-    statusColor: '#080B72',
+    statusColor: '#60A5FA',
+    badge: 'Beta Preview',
+    tags: ['Adaptive Testing', 'Instant Grading', 'Psychometrics'],
   },
   {
     name: 'BusinessOS',
-    description: 'A unified business management platform that brings together operations, team management, billing and reporting into a single coherent workflow.',
-    category: 'Business Management',
-    status: 'Concept',
+    description:
+      'A unified operational cockpit unifying team bandwidth, project accounting, invoice generation, and operational milestones into one coherent, real-time command center.',
+    category: 'Operations Suite',
+    status: 'Concept Architecture',
     statusColor: '#9898A8',
+    badge: 'Design Stage',
+    tags: ['Resource Tracking', 'Financial Telemetry', 'Task Mesh'],
   },
   {
     name: 'BookingFlow',
-    description: 'A smart booking and scheduling system designed for service businesses. Reduce no-shows, automate reminders, and manage resources efficiently.',
-    category: 'Booking & Management',
-    status: 'Concept',
+    description:
+      'Smart scheduling and reservation platform designed to eliminate no-shows and resource bottlenecks for service businesses through intelligent calendar sync and automated reminders.',
+    category: 'Scheduling Engine',
+    status: 'Concept Architecture',
     statusColor: '#9898A8',
+    badge: 'Design Stage',
+    tags: ['Real-Time Booking', 'Payment Gateways', 'Calendar Sync'],
   },
   {
     name: 'FlowAutomate',
-    description: 'A visual workflow automation tool that connects your business tools and triggers actions without writing code. Build, deploy, and iterate fast.',
+    description:
+      'Visual no-code automation canvas that bridges legacy software, internal databases, and third-party APIs to trigger complex operational workflows without manual code.',
     category: 'Workflow Automation',
-    status: 'Concept',
+    status: 'Concept Architecture',
     statusColor: '#9898A8',
+    badge: 'Design Stage',
+    tags: ['Visual Logic', 'API Orchestration', 'Event Webhooks'],
   },
 ];
 
-function ProductCard({ product, index }: { product: typeof products[0]; index: number }) {
+function ProductCard({ product, index }: { product: (typeof products)[0]; index: number }) {
   const cardRef = useRef<HTMLDivElement>(null);
   const [hovered, setHovered] = useState(false);
 
@@ -66,97 +81,91 @@ function ProductCard({ product, index }: { product: typeof products[0]; index: n
     return () => observer.disconnect();
   }, [index]);
 
+  const handleInquire = () => {
+    const contactSection = document.getElementById('contact');
+    if (contactSection) {
+      contactSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <div
       ref={cardRef}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
+      className="group relative flex flex-col justify-between p-7 sm:p-8 rounded-2xl transition-all duration-300"
       style={{
-        padding: '36px 32px',
-        background: '#F7F7F5',
-        border: `1px solid ${hovered ? '#080B72' : 'rgba(8,11,114,0.1)'}`,
-        transition: 'all 0.4s cubic-bezier(0.23, 1, 0.32, 1)',
-        transform: hovered ? 'translateY(-4px)' : 'translateY(0)',
-        display: 'flex',
-        flexDirection: 'column' as const,
-        gap: '16px',
-        position: 'relative' as const,
+        background: hovered ? 'rgba(8, 11, 114, 0.45)' : 'rgba(255, 255, 255, 0.035)',
+        border: `1px solid ${hovered ? 'rgba(247, 247, 245, 0.28)' : 'rgba(247, 247, 245, 0.1)'}`,
+        transform: hovered ? 'translateY(-6px)' : 'translateY(0)',
+        boxShadow: hovered ? '0 20px 40px -15px rgba(0, 0, 0, 0.5)' : 'none',
       }}
     >
-      {/* Status + Category */}
-      <div className="flex items-center justify-between flex-wrap gap-2">
-        <span
-          className="tag-pill"
-          style={{
-            color: 'rgba(8,11,114,0.5)',
-            borderColor: 'rgba(8,11,114,0.2)',
-            fontSize: '0.6rem',
-          }}
-        >
-          {product.category}
-        </span>
-        <div className="flex items-center gap-2">
-          <div style={{
-            width: '6px',
-            height: '6px',
-            borderRadius: '50%',
-            background: product.statusColor,
-            opacity: product.status === 'In Development' ? 1 : 0.4,
-          }} />
-          <span style={{
-            fontSize: '0.65rem',
-            fontWeight: 500,
-            letterSpacing: '0.1em',
-            color: product.statusColor,
-            opacity: product.status === 'In Development' ? 0.7 : 0.4,
-            textTransform: 'uppercase',
-          }}>
-            {product.status}
+      <div>
+        {/* Top Bar: Category Pill & Status Beacon */}
+        <div className="flex items-center justify-between gap-3 mb-6">
+          <span className="px-3 py-1 rounded-full text-[10px] font-mono font-semibold tracking-wider uppercase text-[#F7F7F5]/80 bg-white/5 border border-white/10">
+            {product.category}
           </span>
+
+          <div className="flex items-center gap-2">
+            <span
+              className="w-2 h-2 rounded-full"
+              style={{
+                backgroundColor: product.statusColor,
+                boxShadow: product.status === 'In Development' ? `0 0 8px ${product.statusColor}` : 'none',
+              }}
+            />
+            <span className="text-[10px] font-mono font-medium tracking-wider uppercase text-[#F7F7F5]/60">
+              {product.badge}
+            </span>
+          </div>
+        </div>
+
+        {/* Product Name */}
+        <h3 className="text-2xl sm:text-3xl font-bold tracking-tight text-[#F7F7F5] mb-3 group-hover:text-white transition-colors">
+          {product.name}
+        </h3>
+
+        {/* Description */}
+        <p className="text-sm leading-relaxed text-[#F7F7F5]/70 font-light mb-6">
+          {product.description}
+        </p>
+
+        {/* Tags */}
+        <div className="flex flex-wrap gap-1.5 mb-8">
+          {product.tags.map((tag) => (
+            <span
+              key={tag}
+              className="text-[10px] font-mono px-2.5 py-0.5 rounded bg-white/5 text-[#F7F7F5]/75 border border-white/5"
+            >
+              {tag}
+            </span>
+          ))}
         </div>
       </div>
 
-      {/* Name */}
-      <h3 style={{
-        fontSize: 'clamp(1.2rem, 2vw, 1.6rem)',
-        fontWeight: 700,
-        letterSpacing: '-0.02em',
-        color: '#080B72',
-        lineHeight: 1.1,
-      }}>
-        {product.name}
-      </h3>
+      {/* Card Action Footer */}
+      <div className="pt-4 border-t border-white/10 flex items-center justify-between">
+        <span className="text-xs font-mono tracking-wider uppercase text-[#F7F7F5]/50 group-hover:text-[#F7F7F5]/80 transition-colors">
+          {product.status}
+        </span>
 
-      {/* Description */}
-      <p style={{
-        fontSize: '0.875rem',
-        lineHeight: 1.65,
-        color: '#05062F',
-        opacity: 0.55,
-        fontWeight: 300,
-        flex: 1,
-      }}>
-        {product.description}
-      </p>
-
-      {/* CTA */}
-      <div style={{
-        display: 'flex',
-        alignItems: 'center',
-        gap: '6px',
-        color: '#080B72',
-        fontSize: '0.75rem',
-        fontWeight: 600,
-        letterSpacing: '0.08em',
-        textTransform: 'uppercase',
-        opacity: hovered ? 1 : 0.4,
-        transition: 'opacity 0.3s ease',
-        cursor: 'default',
-      }}>
-        Coming Soon
-        <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden>
-          <path d="M1 6h10M6 1l5 5-5 5" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round"/>
-        </svg>
+        <button
+          type="button"
+          onClick={handleInquire}
+          className="inline-flex items-center gap-1.5 text-xs font-mono font-semibold text-white tracking-wider uppercase hover:underline cursor-pointer"
+        >
+          <span>Early Access</span>
+          <svg
+            className="w-3.5 h-3.5 transform group-hover:translate-x-1 transition-transform"
+            viewBox="0 0 12 12"
+            fill="none"
+            aria-hidden="true"
+          >
+            <path d="M1 6h10M6 1l5 5-5 5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+          </svg>
+        </button>
       </div>
     </div>
   );
@@ -186,60 +195,65 @@ export default function ProductsSection() {
   }, []);
 
   return (
-    <section id="products" className="section-padding" style={{ background: '#05062F' }}>
-      <div className="max-w-[1600px] mx-auto">
+    <section id="products" className="section-padding bg-[#05062F] relative overflow-hidden">
+      {/* Subtle background architectural grid */}
+      <div className="absolute inset-0 pointer-events-none opacity-5" aria-hidden="true">
+        <div
+          style={{
+            backgroundImage:
+              'linear-gradient(rgba(247,247,245,0.2) 1px, transparent 1px), linear-gradient(90deg, rgba(247,247,245,0.2) 1px, transparent 1px)',
+            backgroundSize: '80px 80px',
+            width: '100%',
+            height: '100%',
+          }}
+        />
+      </div>
+
+      <div className="relative z-10 max-w-[1600px] mx-auto">
         {/* Header */}
-        <div ref={titleRef} className="flex flex-col md:flex-row md:items-end md:justify-between gap-8 mb-16">
+        <div ref={titleRef} className="flex flex-col md:flex-row md:items-end md:justify-between gap-8 mb-12 md:mb-16">
           <div>
             <div className="flex items-center gap-4 mb-6">
-              <span style={{ opacity: 0.3, fontSize: '0.65rem', letterSpacing: '0.15em', fontWeight: 500, textTransform: 'uppercase', color: '#F7F7F5' }}>
-                03 / Our Products
+              <span className="text-[11px] font-mono tracking-widest uppercase font-semibold text-[#F7F7F5]/40">
+                02 / Proprietary Products
               </span>
-              <div style={{ flex: 1, maxWidth: '80px', height: '1px', background: 'rgba(247,247,245,0.12)' }} />
+              <div className="flex-1 max-w-[80px] h-[1px] bg-white/15" />
             </div>
-            <h2 className="text-headline" style={{ color: '#F7F7F5' }}>
+            <h2 className="text-headline text-[#F7F7F5] tracking-tight">
               A Growing
               <br />
               Ecosystem.
             </h2>
           </div>
-          <p className="text-body" style={{ color: '#F7F7F5', opacity: 0.4, maxWidth: '360px' }}>
-            We are building a multi-product technology ecosystem. Each product is
-            designed to solve a specific problem — precisely, beautifully, and at scale.
+          <p className="text-body text-[#F7F7F5]/60 max-w-md text-base sm:text-lg leading-relaxed">
+            We are engineering a multi-product technology ecosystem. Each platform is crafted
+            to solve foundational business challenges — precisely, beautifully, and at scale.
           </p>
         </div>
 
-        {/* Product grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        {/* Product Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
           {products.map((product, i) => (
             <ProductCard key={product.name} product={product} index={i} />
           ))}
         </div>
 
-        {/* Bottom note */}
-        <div
-          className="mt-12 pt-8 flex items-center gap-4"
-          style={{ borderTop: '1px solid rgba(247,247,245,0.08)' }}
-        >
-          <div style={{
-            width: '8px', height: '8px',
-            borderRadius: '50%',
-            background: '#080B72',
-            flexShrink: 0,
-          }} />
-          <p style={{
-            fontSize: '0.8rem',
-            color: '#F7F7F5',
-            opacity: 0.3,
-            fontWeight: 300,
-            lineHeight: 1.6,
-          }}>
-            Our product roadmap is continuously evolving. New products are added as we
-            identify opportunities to build meaningful technology solutions.
-          </p>
+        {/* Bottom Note & CTA Bar */}
+        <div className="mt-16 pt-8 border-t border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div className="flex items-center gap-3">
+            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+            <p className="text-xs font-mono text-[#F7F7F5]/50 uppercase tracking-wider">
+              Continuous Roadmap: New platforms added quarterly under active R&D.
+            </p>
+          </div>
+          <a
+            href="#contact"
+            className="text-xs font-mono font-semibold text-[#F7F7F5] uppercase tracking-wider hover:text-white underline"
+          >
+            Request Private Demo or Architecture SOW →
+          </a>
         </div>
       </div>
     </section>
   );
 }
-

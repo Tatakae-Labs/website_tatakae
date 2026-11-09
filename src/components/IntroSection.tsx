@@ -45,7 +45,7 @@ export default function IntroSection() {
         {/* Section label */}
         <div className="flex items-center gap-4 mb-16">
           <span style={{ opacity: 0.4, fontSize: '0.65rem', letterSpacing: '0.15em', fontWeight: 500, textTransform: 'uppercase' }}>
-            01 / Who We Are
+            Studio / Who We Are
           </span>
           <div style={{ flex: 1, height: '1px', background: 'rgba(247,247,245,0.12)' }} />
         </div>

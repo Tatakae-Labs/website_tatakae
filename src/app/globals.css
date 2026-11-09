@@ -226,8 +226,86 @@ html.lenis, html.lenis body {
   .marquee-track { animation: none; }
 }
 
+/* Custom Scrollbar */
+.scrollbar-thin {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(8, 11, 114, 0.2) transparent;
+}
+.scrollbar-thin::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+.scrollbar-thin::-webkit-scrollbar-track {
+  background: transparent;
+}
+.scrollbar-thin::-webkit-scrollbar-thumb {
+  background: rgba(8, 11, 114, 0.2);
+  border-radius: 9999px;
+}
+.scrollbar-thin::-webkit-scrollbar-thumb:hover {
+  background: rgba(8, 11, 114, 0.4);
+}
+
 .canvas-wrapper {
   position: absolute;
   inset: 0;
   pointer-events: none;
+}
+
+/* Print Stylesheet for Legal Documentation */
+@media print {
+  body {
+    background: #FFFFFF !important;
+    color: #05062F !important;
+    font-size: 11pt !important;
+    line-height: 1.5 !important;
+  }
+
+  header,
+  footer,
+  nav,
+  aside,
+  .print\:hidden,
+  .canvas-wrapper {
+    display: none !important;
+  }
+
+  article {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  section {
+    page-break-inside: avoid;
+    break-inside: avoid;
+    border-bottom: 1px solid #D9D9E0 !important;
+    padding-bottom: 1.5rem !important;
+    margin-bottom: 1.5rem !important;
+  }
+
+  h1 {
+    font-size: 22pt !important;
+    color: #080B72 !important;
+  }
+
+  h2 {
+    font-size: 15pt !important;
+    color: #080B72 !important;
+    page-break-after: avoid;
+    break-after: avoid;
+  }
+
+  h3 {
+    font-size: 12pt !important;
+    color: #080B72 !important;
+    page-break-after: avoid;
+    break-after: avoid;
+  }
+
+  a {
+    text-decoration: underline !important;
+    color: #080B72 !important;
+  }
 }

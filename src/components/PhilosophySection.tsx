@@ -208,7 +208,7 @@ export default function PhilosophySection() {
           <div>
             <div className="flex items-center gap-4 mb-8">
               <span style={{ opacity: 0.3, fontSize: '0.65rem', letterSpacing: '0.15em', fontWeight: 500, textTransform: 'uppercase', color: '#F7F7F5' }}>
-                04 / Our Philosophy
+                03 / Engineering Philosophy
               </span>
               <div style={{ flex: 1, maxWidth: '80px', height: '1px', background: 'rgba(247,247,245,0.15)' }} />
             </div>

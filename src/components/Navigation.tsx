@@ -46,6 +46,8 @@ export default function Navigation() {
     const target = document.querySelector(href);
     if (target) {
       target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    } else {
+      window.location.href = '/' + href;
     }
   };
 

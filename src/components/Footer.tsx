@@ -25,6 +25,18 @@ const footerLinks = {
     { label: 'Methodology', href: '#philosophy' },
     { label: 'Start a Project', href: '#contact' },
   ],
+  Legal: [
+    { label: 'Terms & Conditions', href: '/terms-and-conditions' },
+    { label: 'Privacy Policy', href: '/privacy-policy' },
+    { label: 'SLA & Uptime', href: '/service-level-agreement' },
+    { label: 'Cookie Policy', href: '/cookie-policy' },
+    { label: 'Refund Policy', href: '/refund-policy' },
+    { label: 'Data Processing (DPA)', href: '/data-processing-agreement' },
+    { label: 'Acceptable Use (AUP)', href: '/acceptable-use-policy' },
+    { label: 'Intellectual Property', href: '/intellectual-property-policy' },
+    { label: 'Enterprise Support', href: '/enterprise-support-policy' },
+    { label: 'Disclaimer', href: '/disclaimer' },
+  ],
 };
 
 const socialLinks = [
@@ -64,8 +76,16 @@ export default function Footer() {
   };
 
   const scrollTo = (href: string) => {
-    const el = document.querySelector(href);
-    if (el) el.scrollIntoView({ behavior: 'smooth' });
+    if (href.startsWith('#')) {
+      const el = document.querySelector(href);
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth' });
+      } else {
+        window.location.href = '/' + href;
+      }
+    } else {
+      window.location.href = href;
+    }
   };
 
   return (
@@ -413,8 +433,41 @@ export default function Footer() {
           }}
           className="sm:!flex-row sm:!items-center"
         >
-          <div>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
             <span>© 2026 TATAKAE LABS (tatakaelabs.tech) · ALL RIGHTS RESERVED</span>
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px', alignItems: 'center' }}>
+              <a href="/terms-and-conditions" style={{ color: 'rgba(247, 247, 245, 0.65)', textDecoration: 'none' }} className="hover:!text-white transition-colors">
+                Terms
+              </a>
+              <span>·</span>
+              <a href="/privacy-policy" style={{ color: 'rgba(247, 247, 245, 0.65)', textDecoration: 'none' }} className="hover:!text-white transition-colors">
+                Privacy
+              </a>
+              <span>·</span>
+              <a href="/service-level-agreement" style={{ color: 'rgba(247, 247, 245, 0.65)', textDecoration: 'none' }} className="hover:!text-white transition-colors">
+                SLA
+              </a>
+              <span>·</span>
+              <a href="/cookie-policy" style={{ color: 'rgba(247, 247, 245, 0.65)', textDecoration: 'none' }} className="hover:!text-white transition-colors">
+                Cookies
+              </a>
+              <span>·</span>
+              <a href="/data-processing-agreement" style={{ color: 'rgba(247, 247, 245, 0.65)', textDecoration: 'none' }} className="hover:!text-white transition-colors">
+                DPA
+              </a>
+              <span>·</span>
+              <a href="/disclaimer" style={{ color: 'rgba(247, 247, 245, 0.65)', textDecoration: 'none' }} className="hover:!text-white transition-colors">
+                Disclaimer
+              </a>
+              <span>·</span>
+              <a href="/intellectual-property-policy" style={{ color: 'rgba(247, 247, 245, 0.65)', textDecoration: 'none' }} className="hover:!text-white transition-colors">
+                IP Policy
+              </a>
+              <span>·</span>
+              <a href="/enterprise-support-policy" style={{ color: 'rgba(247, 247, 245, 0.65)', textDecoration: 'none' }} className="hover:!text-white transition-colors">
+                Support
+              </a>
+            </div>
           </div>
 
           <div style={{ display: 'flex', gap: '24px' }}>

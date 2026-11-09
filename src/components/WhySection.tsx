@@ -79,7 +79,7 @@ export default function WhySection() {
         <div ref={titleRef}>
           <div className="flex items-center gap-4 mb-6">
             <span style={{ opacity: 0.4, fontSize: '0.65rem', letterSpacing: '0.15em', fontWeight: 500, textTransform: 'uppercase', color: '#080B72' }}>
-              05 / Why Tatakae Labs
+              04 / Why Tatakae Labs
             </span>
             <div style={{ flex: 1, maxWidth: '80px', height: '1px', background: 'rgba(8,11,114,0.15)' }} />
           </div>
