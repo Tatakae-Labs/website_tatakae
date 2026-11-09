@@ -74,18 +74,24 @@ function ServiceCard({ service, index }: { service: (typeof services)[0]; index:
     return () => observer.disconnect();
   }, [index]);
 
+  const handleInquire = () => {
+    const el = document.getElementById('contact');
+    if (el) el.scrollIntoView({ behavior: 'smooth' });
+  };
+
   return (
     <div
       ref={cardRef}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
-      className="group relative flex flex-col justify-between p-8 sm:p-9 lg:p-10 rounded-2xl transition-all duration-400 cursor-default h-full"
+      onClick={handleInquire}
+      className="group relative flex flex-col justify-between p-8 sm:p-9 lg:p-10 pb-16 sm:pb-18 rounded-2xl transition-all duration-300 cursor-pointer h-full overflow-hidden"
       style={{
-        background: hovered ? '#080B72' : 'rgba(255, 255, 255, 0.75)',
+        background: hovered ? '#080B72' : 'rgba(255, 255, 255, 0.85)',
         color: hovered ? '#F7F7F5' : '#05062F',
         border: `1px solid ${hovered ? '#080B72' : 'rgba(8, 11, 114, 0.12)'}`,
-        transform: hovered ? 'translateY(-4px)' : 'translateY(0)',
-        boxShadow: hovered ? '0 20px 36px -12px rgba(8, 11, 114, 0.25)' : '0 2px 8px -2px rgba(8, 11, 114, 0.04)',
+        transform: hovered ? 'translateY(-6px)' : 'translateY(0)',
+        boxShadow: hovered ? '0 24px 44px -12px rgba(8, 11, 114, 0.28)' : '0 2px 10px -2px rgba(8, 11, 114, 0.04)',
       }}
     >
       <div>
@@ -97,31 +103,19 @@ function ServiceCard({ service, index }: { service: (typeof services)[0]; index:
           >
             {service.number}
           </span>
-          <div
-            className="w-7 h-7 rounded-full flex items-center justify-center transition-all"
+          <span
+            className="text-[10px] font-mono tracking-widest uppercase px-2.5 py-1 rounded-full border transition-all"
             style={{
-              background: hovered ? 'rgba(247, 247, 245, 0.15)' : 'rgba(8, 11, 114, 0.06)',
+              borderColor: hovered ? 'rgba(247, 247, 245, 0.25)' : 'rgba(8, 11, 114, 0.15)',
+              color: hovered ? 'rgba(247, 247, 245, 0.85)' : 'rgba(8, 11, 114, 0.65)',
             }}
           >
-            <svg
-              className={`w-3.5 h-3.5 transform transition-transform ${hovered ? 'translate-x-0.5' : ''}`}
-              viewBox="0 0 14 14"
-              fill="none"
-              aria-hidden="true"
-            >
-              <path
-                d="M1 7h12M7 1l6 6-6 6"
-                stroke="currentColor"
-                strokeWidth="1.5"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
-          </div>
+            Capability
+          </span>
         </div>
 
         {/* Title */}
-        <h3 className="text-xl sm:text-2xl font-bold tracking-tight mb-3 leading-snug">
+        <h3 className={`text-xl sm:text-2xl font-bold tracking-tight mb-3 leading-snug transition-all ${hovered ? 'underline' : ''}`}>
           {service.title}
         </h3>
 
@@ -132,26 +126,45 @@ function ServiceCard({ service, index }: { service: (typeof services)[0]; index:
         >
           {service.description}
         </p>
+
+        {/* Tags */}
+        <div className="flex flex-wrap gap-2">
+          {service.tags.map((tag) => (
+            <span
+              key={tag}
+              className="text-[10px] font-mono px-2.5 py-0.5 rounded-full border transition-all"
+              style={{
+                borderColor: hovered ? 'rgba(247, 247, 245, 0.25)' : 'rgba(8, 11, 114, 0.15)',
+                color: hovered ? '#F7F7F5' : '#080B72',
+                background: hovered ? 'rgba(247, 247, 245, 0.08)' : 'rgba(8, 11, 114, 0.03)',
+              }}
+            >
+              {tag}
+            </span>
+          ))}
+        </div>
       </div>
 
-      {/* Tags */}
+      {/* George Francis Docked Corner Arrow Badge */}
       <div
-        className="flex flex-wrap gap-2 pt-5 border-t mt-auto"
-        style={{ borderColor: hovered ? 'rgba(247, 247, 245, 0.15)' : 'rgba(8, 11, 114, 0.08)' }}
+        className="absolute bottom-0 right-0 px-4 py-3 sm:px-5 sm:py-3.5 rounded-tl-2xl rounded-br-2xl flex items-center justify-center transition-all duration-300"
+        style={{
+          background: hovered ? '#FFFFFF' : '#080B72',
+          color: hovered ? '#080B72' : '#FFFFFF',
+          boxShadow: hovered ? '0 4px 12px rgba(0, 0, 0, 0.15)' : 'none',
+        }}
       >
-        {service.tags.map((tag) => (
-          <span
-            key={tag}
-            className="text-[10px] font-mono px-2.5 py-0.5 rounded-full border transition-all"
-            style={{
-              borderColor: hovered ? 'rgba(247, 247, 245, 0.25)' : 'rgba(8, 11, 114, 0.15)',
-              color: hovered ? '#F7F7F5' : '#080B72',
-              background: hovered ? 'rgba(247, 247, 245, 0.08)' : 'rgba(8, 11, 114, 0.03)',
-            }}
-          >
-            {tag}
-          </span>
-        ))}
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          className={`w-4 h-4 transform transition-transform duration-300 ${hovered ? 'translate-x-1' : ''}`}
+        >
+          <path
+            fill="currentColor"
+            d="M13.4697 17.9697C13.1768 18.2626 13.1768 18.7374 13.4697 19.0303C13.7626 19.3232 14.2374 19.3232 14.5303 19.0303L20.3232 13.2374C21.0066 12.554 21.0066 11.446 20.3232 10.7626L14.5303 4.96967C14.2374 4.67678 13.7626 4.67678 13.4697 4.96967C13.1768 5.26256 13.1768 5.73744 13.4697 6.03033L18.6893 11.25H4C3.58579 11.25 3.25 11.5858 3.25 12C3.25 12.4142 3.58579 12.75 4 12.75H18.6893L13.4697 17.9697Z"
+          />
+        </svg>
       </div>
     </div>
   );

@@ -103,12 +103,13 @@ function ProductCard({ product, index }: { product: (typeof products)[0]; index:
       ref={cardRef}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
-      className="group relative flex flex-col justify-between p-8 sm:p-9 lg:p-10 rounded-2xl transition-all duration-300 h-full"
+      onClick={handleInquire}
+      className="group relative flex flex-col justify-between p-8 sm:p-9 lg:p-10 pb-16 sm:pb-18 rounded-2xl transition-all duration-300 h-full cursor-pointer overflow-hidden"
       style={{
-        background: hovered ? 'rgba(8, 11, 114, 0.45)' : 'rgba(255, 255, 255, 0.035)',
-        border: `1px solid ${hovered ? 'rgba(247, 247, 245, 0.28)' : 'rgba(247, 247, 245, 0.1)'}`,
-        transform: hovered ? 'translateY(-4px)' : 'translateY(0)',
-        boxShadow: hovered ? '0 20px 40px -15px rgba(0, 0, 0, 0.5)' : 'none',
+        background: hovered ? 'rgba(8, 11, 114, 0.55)' : 'rgba(255, 255, 255, 0.035)',
+        border: `1px solid ${hovered ? 'rgba(247, 247, 245, 0.35)' : 'rgba(247, 247, 245, 0.1)'}`,
+        transform: hovered ? 'translateY(-6px)' : 'translateY(0)',
+        boxShadow: hovered ? '0 24px 48px -12px rgba(0, 0, 0, 0.6)' : 'none',
       }}
     >
       <div>
@@ -133,7 +134,7 @@ function ProductCard({ product, index }: { product: (typeof products)[0]; index:
         </div>
 
         {/* Product Name */}
-        <h3 className="text-2xl font-bold tracking-tight text-[#F7F7F5] mb-3 leading-snug group-hover:text-white transition-colors">
+        <h3 className={`text-2xl font-bold tracking-tight text-[#F7F7F5] mb-3 leading-snug transition-all ${hovered ? 'underline text-white' : ''}`}>
           {product.name}
         </h3>
 
@@ -143,7 +144,7 @@ function ProductCard({ product, index }: { product: (typeof products)[0]; index:
         </p>
 
         {/* Tags */}
-        <div className="flex flex-wrap gap-2 mb-6">
+        <div className="flex flex-wrap gap-2">
           {product.tags.map((tag) => (
             <span
               key={tag}
@@ -155,27 +156,36 @@ function ProductCard({ product, index }: { product: (typeof products)[0]; index:
         </div>
       </div>
 
-      {/* Card Action Footer */}
-      <div className="pt-5 border-t border-white/10 flex items-center justify-between mt-auto">
+      {/* Bottom meta row */}
+      <div className="pt-6 flex items-center justify-between mt-auto">
         <span className="text-[10px] font-mono tracking-wider uppercase text-[#F7F7F5]/55 group-hover:text-[#F7F7F5]/85 transition-colors">
           {product.status}
         </span>
+      </div>
 
-        <button
-          type="button"
-          onClick={handleInquire}
-          className="inline-flex items-center gap-1.5 text-xs font-mono font-semibold text-white tracking-wider uppercase hover:underline cursor-pointer"
+      {/* George Francis Docked Corner Arrow Badge */}
+      <div
+        className="absolute bottom-0 right-0 px-4 py-3 sm:px-5 sm:py-3.5 rounded-tl-2xl rounded-br-2xl flex items-center gap-2 transition-all duration-300"
+        style={{
+          background: hovered ? '#FFFFFF' : '#818CF8',
+          color: hovered ? '#05062F' : '#FFFFFF',
+          boxShadow: hovered ? '0 4px 16px rgba(129, 140, 248, 0.4)' : 'none',
+        }}
+      >
+        <span className="text-[11px] font-mono font-semibold tracking-wider uppercase">
+          Early Access
+        </span>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          className={`w-3.5 h-3.5 transform transition-transform duration-300 ${hovered ? 'translate-x-1' : ''}`}
         >
-          <span>Early Access</span>
-          <svg
-            className="w-3.5 h-3.5 transform group-hover:translate-x-1 transition-transform"
-            viewBox="0 0 12 12"
-            fill="none"
-            aria-hidden="true"
-          >
-            <path d="M1 6h10M6 1l5 5-5 5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-          </svg>
-        </button>
+          <path
+            fill="currentColor"
+            d="M13.4697 17.9697C13.1768 18.2626 13.1768 18.7374 13.4697 19.0303C13.7626 19.3232 14.2374 19.3232 14.5303 19.0303L20.3232 13.2374C21.0066 12.554 21.0066 11.446 20.3232 10.7626L14.5303 4.96967C14.2374 4.67678 13.7626 4.67678 13.4697 4.96967C13.1768 5.26256 13.1768 5.73744 13.4697 6.03033L18.6893 11.25H4C3.58579 11.25 3.25 11.5858 3.25 12C3.25 12.4142 3.58579 12.75 4 12.75H18.6893L13.4697 17.9697Z"
+          />
+        </svg>
       </div>
     </div>
   );
