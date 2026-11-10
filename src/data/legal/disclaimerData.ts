@@ -71,7 +71,7 @@ export const DISCLAIMER_SECTIONS: LegalSection[] = [
     title: 'Statutory Jurisdiction and Communications',
     content: [
       'This Disclaimer is governed exclusively by the laws of the **Republic of India**.',
-      'If you have questions regarding the terms or scope of this Disclaimer, you may contact our legal desk at `tatakaelabs@gmail.com`.',
+      'If you have questions regarding the terms or scope of this Disclaimer, you may contact our legal desk at `support@tatakaelabs.tech`.',
     ],
   },
 ];

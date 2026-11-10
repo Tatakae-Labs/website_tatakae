@@ -18,7 +18,7 @@ export const ENTERPRISE_SUPPORT_SECTIONS: LegalSection[] = [
     content: [
       'Tatakae Labs structures its technical support across three operational tiers:',
       '• **Standard Tier (Included with Basic SaaS & Pilot Accounts):**',
-      '  - Support Channels: Email support desk (`tatakaelabs@gmail.com`).',
+      '  - Support Channels: Email support desk (`support@tatakaelabs.tech`).',
       '  - Availability: Monday to Friday, 09:30 AM – 06:30 PM IST.',
       '  - Initial Response Time: Within 12 to 24 business hours.',
       '• **Professional Tier (Growth SaaS & Standard Consulting Clients):**',
@@ -81,7 +81,7 @@ export const ENTERPRISE_SUPPORT_SECTIONS: LegalSection[] = [
     content: [
       'To upgrade your account to Enterprise Support or discuss customized engineering support schedules, contact:',
       '• **TATAKAE LABS — Enterprise Support Desk**',
-      '• **Email:** `tatakaelabs@gmail.com`',
+      '• **Email:** `support@tatakaelabs.tech`',
       '• **Critical Security Escalation:** `tatakaelabs+security@gmail.com`',
       '• **Headquarters:** Bengaluru / New Delhi, Republic of India',
     ],

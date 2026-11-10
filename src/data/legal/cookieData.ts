@@ -74,7 +74,7 @@ export const COOKIE_SECTIONS: LegalSection[] = [
     title: 'Policy Updates and Contact Inquiries',
     content: [
       'We may update this Cookie Policy periodically to reflect enhancements in our digital platform or evolving statutory standards.',
-      'For any questions regarding our storage practices, contact our compliance desk at `tatakaelabs@gmail.com` or write to our Grievance Officer at `tatakaelabs+grievance@gmail.com`.',
+      'For any questions regarding our storage practices, contact our compliance desk at `support@tatakaelabs.tech` or write to our Grievance Officer at `tatakaelabs+grievance@gmail.com`.',
     ],
   },
 ];

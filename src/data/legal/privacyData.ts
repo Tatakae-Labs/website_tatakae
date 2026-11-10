@@ -298,7 +298,7 @@ export const PRIVACY_SECTIONS: LegalSection[] = [
       '• **Designated Officer:** Grievance Officer — Privacy & Data Protection',
       '• **Entity Identity:** TATAKAE LABS (Operating as Tatakae Labs Technologies, CIN in incorporation process, Bengaluru, Karnataka, India)',
       '• **Official Grievance Email:** `tatakaelabs+grievance@gmail.com`',
-      '• **General Inquiries:** `tatakaelabs@gmail.com`',
+      '• **General Inquiries:** `support@tatakaelabs.tech`',
       '• **Jurisdiction Desk:** Bengaluru / New Delhi, Republic of India',
       '• **Statutory Redressal Timeline:** The Grievance Officer shall acknowledge your communication within twenty-four (24) hours of receipt and dispose of the grievance within fifteen (15) calendar days.',
     ],

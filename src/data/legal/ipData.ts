@@ -76,7 +76,7 @@ export const IP_SECTIONS: LegalSection[] = [
     title: 'Brand Usage Guidelines and Press Inquiries',
     content: [
       '• Third parties, partners, and media organizations may not use the Tatakae Labs logo, wordmark, or brand assets without prior written consent.',
-      '• Clients and technology partners may reference Tatakae Labs as their technology studio or software provider using approved brand assets available upon request from `tatakaelabs@gmail.com`.',
+      '• Clients and technology partners may reference Tatakae Labs as their technology studio or software provider using approved brand assets available upon request from `support@tatakaelabs.tech`.',
     ],
   },
 ];

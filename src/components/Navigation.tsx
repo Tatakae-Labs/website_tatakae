@@ -353,10 +353,10 @@ export default function Navigation() {
           <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.8rem', color: 'rgba(8, 11, 114, 0.7)' }}>
             <span>Inquiries</span>
             <a
-              href="mailto:tatakaelabs@gmail.com"
+              href="mailto:support@tatakaelabs.tech"
               style={{ fontWeight: 600, color: '#080B72', textDecoration: 'none' }}
             >
-              tatakaelabs@gmail.com
+              support@tatakaelabs.tech
             </a>
           </div>
           <div

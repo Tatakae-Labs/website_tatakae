@@ -93,8 +93,8 @@ export default function LegalLayout({ meta, sections }: LegalLayoutProps) {
                     <p className="text-sm font-medium text-[#05062F] mb-1">TATAKAE LABS Legal Desk</p>
                     <p>
                       Email:{' '}
-                      <a href="mailto:tatakaelabs@gmail.com" className="text-[#080B72] font-mono hover:underline">
-                        tatakaelabs@gmail.com
+                      <a href="mailto:support@tatakaelabs.tech" className="text-[#080B72] font-mono hover:underline">
+                        support@tatakaelabs.tech
                       </a>
                     </p>
                     <p className="mt-1 text-[#05062F]/70">

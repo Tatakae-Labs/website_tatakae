@@ -54,7 +54,7 @@ export default function Footer() {
   }, []);
 
   const handleCopyEmail = () => {
-    navigator.clipboard.writeText('tatakaelabs@gmail.com');
+    navigator.clipboard.writeText('support@tatakaelabs.tech');
     setCopied(true);
     setTimeout(() => setCopied(false), 2200);
   };
@@ -171,7 +171,7 @@ export default function Footer() {
               }}
             >
               <span style={{ fontFamily: 'monospace', color: '#7e87ff' }}>✉</span>
-              <span className="truncate">tatakaelabs@gmail.com</span>
+              <span className="truncate">support@tatakaelabs.tech</span>
               <span
                 style={{
                   fontSize: '0.65rem',

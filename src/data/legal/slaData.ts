@@ -112,7 +112,7 @@ export const SLA_SECTIONS: LegalSection[] = [
     title: 'Support Channels and Contact Methods',
     content: [
       'Tatakae Labs provides multi-tiered technical support through designated interfaces:',
-      '• **Electronic Support Desk:** `tatakaelabs@gmail.com` (Monitored ticketing intake).',
+      '• **Electronic Support Desk:** `support@tatakaelabs.tech` (Monitored ticketing intake).',
       '• **Critical Incident Desk:** `tatakaelabs+security@gmail.com` (Priority triage for security and P1 outages).',
       '• **Enterprise Dedicated Slack/Discord Bridge:** Available exclusively to subscribed Enterprise Tier accounts.',
       '• Support requests must include account identifier, tenant URL, detailed steps to reproduce, error codes, and screenshots where available.',
@@ -261,7 +261,7 @@ export const SLA_SECTIONS: LegalSection[] = [
     title: 'Service Credit Claim Process',
     content: [
       'To claim an eligible Service Credit:',
-      '• The Customer must submit a formal written claim to `tatakaelabs@gmail.com` within fifteen (15) calendar days following the conclusion of the calendar month in which the downtime occurred.',
+      '• The Customer must submit a formal written claim to `support@tatakaelabs.tech` within fifteen (15) calendar days following the conclusion of the calendar month in which the downtime occurred.',
       '• The claim must include the support ticket ID, system logs, dates, times, and duration of the verified outage.',
       '• Tatakae Labs will review server telemetry and render a written determination within fifteen (15) business days.',
     ],

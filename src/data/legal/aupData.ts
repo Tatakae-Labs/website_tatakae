@@ -92,7 +92,7 @@ export const AUP_SECTIONS: LegalSection[] = [
       'If you discover or suspect an abuse of Tatakae Labs infrastructure, security vulnerability, or violation of this AUP, report it immediately to:',
       '• **TATAKAE LABS — Security & Trust Desk**',
       '• **Email:** `tatakaelabs+security@gmail.com`',
-      '• **General Contact:** `tatakaelabs@gmail.com`',
+      '• **General Contact:** `support@tatakaelabs.tech`',
       '• We practice coordinated vulnerability disclosure and will acknowledge receipt within 24 hours.',
     ],
   },

@@ -41,7 +41,7 @@ export const TERMS_SECTIONS: LegalSection[] = [
       '• **Official Domain:** `https://www.tatakaelabs.tech`',
       '• **Registered Corporate Entity:** `TATAKAE LABS Technologies (CIN pending incorporation, Bengaluru, Karnataka, India)`',
       '• **Corporate Jurisdiction:** Republic of India',
-      '• **Principal Communications Desk:** `tatakaelabs@gmail.com`',
+      '• **Principal Communications Desk:** `support@tatakaelabs.tech`',
       '• **Grievance Officer Desk:** `tatakaelabs+grievance@gmail.com`',
       'Where regulatory registration numbers (such as Corporate Identification Number - CIN or Goods and Services Tax Identification Number - GSTIN) are finalized, such credentials will be published in official billing instruments, formal SOWs, and updated electronic notices.',
     ],
@@ -343,7 +343,7 @@ export const TERMS_SECTIONS: LegalSection[] = [
     content: [
       'All formal legal notices, inquiries, contractual correspondence, and complaints concerning these Terms should be transmitted to:',
       '• **TATAKAE LABS — Legal & Compliance Desk**',
-      '• **Official Email:** `tatakaelabs@gmail.com`',
+      '• **Official Email:** `support@tatakaelabs.tech`',
       '• **Grievance Desk:** `tatakaelabs+grievance@gmail.com`',
       '• **Website:** `https://www.tatakaelabs.tech`',
       '• **Registered Corporate Entity:** `TATAKAE LABS Technologies (CIN pending incorporation, Bengaluru, Karnataka, India)`',

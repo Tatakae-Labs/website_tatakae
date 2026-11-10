@@ -297,7 +297,7 @@ export default function TeamSection() {
             </p>
           </div>
           <a
-            href="mailto:tatakaelabs@gmail.com?subject=Engineering%20Career%20Inquiry%20%E2%80%94%20TATAKAE%20LABS"
+            href="mailto:support@tatakaelabs.tech?subject=Engineering%20Career%20Inquiry%20%E2%80%94%20TATAKAE%20LABS"
             className="btn-outline px-6 py-3 text-xs tracking-wider uppercase font-semibold whitespace-nowrap self-stretch sm:self-auto text-center cursor-pointer"
           >
             Join The Studio →

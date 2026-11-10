@@ -140,10 +140,10 @@ export default function ContactSection() {
                   Direct Inquiries &amp; Project RFPs
                 </span>
                 <a
-                  href="mailto:tatakaelabs@gmail.com"
+                  href="mailto:support@tatakaelabs.tech"
                   className="text-base sm:text-lg font-bold text-[#080B72] hover:underline"
                 >
-                  tatakaelabs@gmail.com
+                  support@tatakaelabs.tech
                 </a>
               </div>
 
