@@ -2,47 +2,11 @@
 
 import { useRef, useEffect, useState } from 'react';
 
-const projectTypes = [
-  'SaaS Product',
-  'Web Application',
-  'Mobile App',
-  'Business Automation',
-  'CRM System',
-  'AI Integration',
-  'Digital Transformation',
-  'Consulting',
-  'Other',
-];
-
-interface FormData {
-  name: string;
-  email: string;
-  company: string;
-  projectType: string;
-  description: string;
-}
-
-interface FormErrors {
-  name?: string;
-  email?: string;
-  description?: string;
-}
-
 export default function ContactSection() {
   const sectionRef = useRef<HTMLElement>(null);
   const titleRef = useRef<HTMLDivElement>(null);
   const formRef = useRef<HTMLDivElement>(null);
-
-  const [formData, setFormData] = useState<FormData>({
-    name: '',
-    email: '',
-    company: '',
-    projectType: '',
-    description: '',
-  });
-  const [errors, setErrors] = useState<FormErrors>({});
-  const [submitted, setSubmitted] = useState(false);
-  const [submitting, setSubmitting] = useState(false);
+  const [copied, setCopied] = useState(false);
 
   useEffect(() => {
     [titleRef.current, formRef.current].forEach((el, i) => {
@@ -66,44 +30,17 @@ export default function ContactSection() {
     });
   }, []);
 
-  const validate = (): boolean => {
-    const newErrors: FormErrors = {};
-    if (!formData.name.trim()) newErrors.name = 'Name is required';
-    if (!formData.email.trim()) {
-      newErrors.email = 'Email is required';
-    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
-      newErrors.email = 'Please enter a valid email address';
-    }
-    if (!formData.description.trim()) {
-      newErrors.description = 'Please describe your project or requirements';
-    }
-    setErrors(newErrors);
-    return Object.keys(newErrors).length === 0;
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!validate()) return;
-
-    setSubmitting(true);
-    // Simulate API call
-    await new Promise((resolve) => setTimeout(resolve, 1000));
-    setSubmitting(false);
-    setSubmitted(true);
-  };
-
-  const handleChange = (field: keyof FormData, value: string) => {
-    setFormData((prev) => ({ ...prev, [field]: value }));
-    if (errors[field as keyof FormErrors]) {
-      setErrors((prev) => ({ ...prev, [field]: undefined }));
-    }
+  const handleCopyEmail = () => {
+    navigator.clipboard.writeText('support@tatakaelabs.tech');
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2200);
   };
 
   return (
     <section
       ref={sectionRef}
       id="contact"
-      className="section-padding bg-[#F7F7F5] relative"
+      className="section-padding bg-[#F7F7F5] relative scroll-mt-12"
     >
       <div className="max-w-[1600px] mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
@@ -180,142 +117,117 @@ export default function ContactSection() {
             </div>
           </div>
 
-          {/* Right Column — Elevated Form Card */}
+          {/* Right Column — Project Intake Coming Soon Card */}
           <div ref={formRef} className="lg:col-span-7">
             <div
-              className="rounded-2xl bg-white border border-[#080B72]/15 shadow-sm"
-              style={{ padding: 'clamp(28px, 4vw, 44px)' }}
+              className="rounded-2xl bg-white border border-[#080B72]/15 shadow-sm relative overflow-hidden"
+              style={{ padding: 'clamp(28px, 4vw, 48px)' }}
             >
-              {submitted ? (
-                <div className="flex flex-col items-start justify-center py-12">
-                  <div className="w-12 h-12 rounded-full bg-emerald-100 text-emerald-800 flex items-center justify-center font-bold text-xl mb-6">
-                    ✓
+              {/* Header Badge */}
+              <div className="flex items-center justify-between gap-3 mb-6">
+                <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-[11px] font-mono font-semibold tracking-wider uppercase text-[#080B72] bg-[#080B72]/5 border border-[#080B72]/15">
+                  <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+                  Interactive Form · Coming Soon
+                </span>
+                <span className="text-[11px] font-mono text-[#080B72]/45 uppercase tracking-widest hidden sm:inline-block">
+                  Direct Intake Portal
+                </span>
+              </div>
+
+              <h3 className="text-2xl sm:text-3xl font-bold text-[#080B72] tracking-tight mb-3">
+                Project Scoping Portal
+              </h3>
+
+              <p className="text-sm sm:text-base text-[#05062F]/75 leading-relaxed mb-8 max-w-xl">
+                Our automated project scoping and intake engine is currently under active development.
+                In the meantime, our core engineering team directly reviews briefs, specifications, and RFPs via email.
+              </p>
+
+              {/* Direct Email Action Box */}
+              <div className="p-6 sm:p-7 rounded-xl border border-[#080B72]/15 bg-[#F7F7F5]/90 mb-8 transition-all hover:border-[#080B72]/30">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                  <div>
+                    <span className="block text-[10px] font-mono uppercase tracking-widest text-[#080B72]/60 mb-1 font-semibold">
+                      Direct Project Intake Channel
+                    </span>
+                    <a
+                      href="mailto:support@tatakaelabs.tech?subject=Project%20Inquiry%20%E2%80%94%20TATAKAE%20LABS"
+                      className="text-lg sm:text-xl font-bold text-[#080B72] hover:underline break-all"
+                    >
+                      support@tatakaelabs.tech
+                    </a>
                   </div>
-                  <h3 className="text-2xl sm:text-3xl font-bold text-[#080B72] tracking-tight mb-3">
-                    Inquiry Received.
-                  </h3>
-                  <p className="text-base text-[#05062F]/70 leading-relaxed max-w-md">
-                    Thank you for reaching out to TATAKAE LABS. Our engineering directors will
-                    review your brief and schedule an initial discovery call within 24 hours.
-                  </p>
+                  <div className="flex items-center gap-2.5 flex-wrap">
+                    <button
+                      type="button"
+                      onClick={handleCopyEmail}
+                      className="px-4 py-2 rounded-lg text-xs font-mono font-semibold uppercase tracking-wider border border-[#080B72]/20 text-[#080B72] bg-white hover:bg-[#080B72] hover:text-white transition-all cursor-pointer shadow-xs"
+                    >
+                      {copied ? '✓ Copied' : 'Copy Email'}
+                    </button>
+                    <a
+                      href="mailto:support@tatakaelabs.tech?subject=Project%20Inquiry%20%E2%80%94%20TATAKAE%20LABS"
+                      className="btn-primary px-5 py-2 text-xs font-mono font-semibold uppercase tracking-wider cursor-pointer inline-flex items-center gap-2"
+                    >
+                      <span>Send Brief</span>
+                      <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+                        <path d="M1 11L11 1M11 1H3M11 1V9" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                      </svg>
+                    </a>
+                  </div>
                 </div>
-              ) : (
-                <form onSubmit={handleSubmit} noValidate>
-                  <div className="space-y-6">
-                    {/* Name */}
-                    <FormField label="Your Full Name *" error={errors.name}>
-                      <input
-                        className="form-input"
-                        type="text"
-                        placeholder="e.g. John Doe"
-                        value={formData.name}
-                        onChange={(e) => handleChange('name', e.target.value)}
-                        autoComplete="name"
-                      />
-                    </FormField>
+              </div>
 
-                    {/* Email */}
-                    <FormField label="Business Email *" error={errors.email}>
-                      <input
-                        className="form-input"
-                        type="email"
-                        placeholder="john@company.com"
-                        value={formData.email}
-                        onChange={(e) => handleChange('email', e.target.value)}
-                        autoComplete="email"
-                      />
-                    </FormField>
-
-                    {/* Company */}
-                    <FormField label="Company / Organisation">
-                      <input
-                        className="form-input"
-                        type="text"
-                        placeholder="Acme Corp"
-                        value={formData.company}
-                        onChange={(e) => handleChange('company', e.target.value)}
-                        autoComplete="organization"
-                      />
-                    </FormField>
-
-                    {/* Project Type */}
-                    <FormField label="Project / Solution Category">
-                      <div className="relative">
-                        <select
-                          className="form-input pr-8 cursor-pointer appearance-none"
-                          value={formData.projectType}
-                          onChange={(e) => handleChange('projectType', e.target.value)}
-                        >
-                          <option value="">Select scope or service area...</option>
-                          {projectTypes.map((type) => (
-                            <option key={type} value={type}>
-                              {type}
-                            </option>
-                          ))}
-                        </select>
-                        <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2 text-[#080B72]/60">
-                          <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
-                            <path d="M2.5 4.5L6 8L9.5 4.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                          </svg>
-                        </div>
-                      </div>
-                    </FormField>
-
-                    {/* Description */}
-                    <FormField label="Tell Us About Your Goals & Timeline *" error={errors.description}>
-                      <textarea
-                        className="form-input"
-                        placeholder="Describe your vision, technical requirements, or problem to solve..."
-                        value={formData.description}
-                        onChange={(e) => handleChange('description', e.target.value)}
-                        rows={4}
-                        style={{ resize: 'vertical', minHeight: '110px' }}
-                      />
-                    </FormField>
-
-                    {/* Submit Button */}
-                    <div className="pt-4">
-                      <button
-                        type="submit"
-                        className="btn-primary w-full sm:w-auto justify-center px-10 py-4 text-xs font-semibold tracking-widest uppercase cursor-pointer"
-                        disabled={submitting}
-                        style={{ opacity: submitting ? 0.7 : 1 }}
-                      >
-                        {submitting ? 'Transmitting Brief...' : 'Send Project Inquiry'}
-                        {!submitting && (
-                          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
-                            <path d="M1 7h12M7 1l6 6-6 6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-                          </svg>
-                        )}
-                      </button>
-                    </div>
+              {/* What To Include - Maps directly to form fields */}
+              <div>
+                <span className="text-[11px] font-mono font-semibold uppercase tracking-wider text-[#080B72]/70 block mb-3.5">
+                  Recommended Brief Particulars:
+                </span>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+                  <div className="p-4 rounded-xl border border-[#080B72]/10 bg-white/80">
+                    <span className="font-mono text-xs font-bold text-[#080B72] block mb-1">
+                      01 / Identity &amp; Company
+                    </span>
+                    <p className="text-xs text-[#05062F]/70 leading-relaxed">
+                      Your full name, business email, and organization or company name.
+                    </p>
                   </div>
-                </form>
-              )}
+                  <div className="p-4 rounded-xl border border-[#080B72]/10 bg-white/80">
+                    <span className="font-mono text-xs font-bold text-[#080B72] block mb-1">
+                      02 / Solution Category
+                    </span>
+                    <p className="text-xs text-[#05062F]/70 leading-relaxed">
+                      SaaS platform, custom web/mobile app, AI/ML systems, or automation workflow.
+                    </p>
+                  </div>
+                  <div className="p-4 rounded-xl border border-[#080B72]/10 bg-white/80">
+                    <span className="font-mono text-xs font-bold text-[#080B72] block mb-1">
+                      03 / Technical Requirements
+                    </span>
+                    <p className="text-xs text-[#05062F]/70 leading-relaxed">
+                      Core architectural needs, integrations, existing tech stack, or problem statement.
+                    </p>
+                  </div>
+                  <div className="p-4 rounded-xl border border-[#080B72]/10 bg-white/80">
+                    <span className="font-mono text-xs font-bold text-[#080B72] block mb-1">
+                      04 / Goals &amp; Timeline
+                    </span>
+                    <p className="text-xs text-[#05062F]/70 leading-relaxed">
+                      Target delivery milestones, launch horizon, and expected scale.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Bottom SLA Notice */}
+              <div className="mt-8 pt-6 border-t border-[#080B72]/10 flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs font-mono text-[#080B72]/65">
+                <span>Guaranteed reply within 24 business hours</span>
+                <span className="hidden sm:inline">Operating from Nagpur, India</span>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </section>
-  );
-}
-
-function FormField({
-  label,
-  error,
-  children,
-}: {
-  label: string;
-  error?: string;
-  children: React.ReactNode;
-}) {
-  return (
-    <div>
-      <label className="block text-[11px] font-mono font-semibold tracking-wider text-[#080B72]/70 uppercase mb-2">
-        {label}
-      </label>
-      {children}
-      {error && <p className="text-xs text-rose-600 mt-1 font-mono">{error}</p>}
-    </div>
   );
 }
